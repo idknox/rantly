@@ -1,6 +1,11 @@
 <div class="reg">
   <h1>Register</h1>
   <%= form_for @user do |f| %>
+    <% f.object.errors.full_messages.each do |error| %>
+      <div class="errors">
+        <%= error %>
+      </div>
+      <% end %>
     <%= f.label :username %>
     <%= f.text_field :username %>
 
@@ -17,14 +22,14 @@
     <%= f.text_area :bio, rows: "10" %>
 
     <p>How often do you rant?</p>
-    <%= f.radio_button :frequency, :daily %>
-    <%= f.label :frequency_daily, "Daily" %>
+    <%= f.radio_button :post_frequency, :daily %>
+    <%= f.label :post_frequency_daily, "Daily" %>
 
-    <%= f.radio_button :frequency, :weekly %>
-    <%= f.label :frequency_weekly, "Weekly" %>
+    <%= f.radio_button :post_frequency, :weekly %>
+    <%= f.label :post_frequency_weekly, "Weekly" %>
 
-    <%= f.radio_button :frequency, :monthly %>
-    <%= f.label :frequency_monthly, "Monthly" %>
+    <%= f.radio_button :post_frequency, :monthly %>
+    <%= f.label :post_frequency_monthly, "Monthly" %>
 
     <%= f.submit "Register" %>
   <% end %>
