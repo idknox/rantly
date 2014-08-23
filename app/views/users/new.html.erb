@@ -1,0 +1,31 @@
+<div class="reg">
+  <h1>Register</h1>
+  <%= form_for @user do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+
+    <%= f.label :bio %>
+    <%= f.text_area :bio, rows: "10" %>
+
+    <p>How often do you rant?</p>
+    <%= f.radio_button :frequency, :daily %>
+    <%= f.label :frequency_daily, "Daily" %>
+
+    <%= f.radio_button :frequency, :weekly %>
+    <%= f.label :frequency_weekly, "Weekly" %>
+
+    <%= f.radio_button :frequency, :monthly %>
+    <%= f.label :frequency_monthly, "Monthly" %>
+
+    <%= f.submit "Register" %>
+  <% end %>
+</div>
