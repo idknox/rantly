@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      flash[:notice] = "Thank you for registering!"
       redirect_to root_path
     else
       render :new
@@ -18,6 +19,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :frequency)
+    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :post_frequency)
   end
 end

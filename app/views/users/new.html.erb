@@ -20,7 +20,7 @@
 
     <%= f.label :bio %>
     <%= f.text_area :bio, rows: "10" %>
-
+    <div class="frequency-container">
     <p>How often do you rant?</p>
     <%= f.radio_button :post_frequency, :daily %>
     <%= f.label :post_frequency_daily, "Daily" %>
@@ -30,7 +30,7 @@
 
     <%= f.radio_button :post_frequency, :monthly %>
     <%= f.label :post_frequency_monthly, "Monthly" %>
-
+    </div>
     <%= f.submit "Register" %>
   <% end %>
 </div>
