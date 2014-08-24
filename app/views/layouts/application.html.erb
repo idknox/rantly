@@ -8,16 +8,27 @@
 </head>
 <body>
 <div class="nav">
-  <div class="title"></div>
-  <div class="nav_buttons">
-    <%= link_to "Login", signin_path %>
-    <%= link_to "Join", new_user_path %>
-  </div>
+  <div class="title">Rantly</div>
+  <% if current_user %>
+    <div class="nav-options">
+      <%= link_to "Dashboard" %>
+      <%= link_to "Following" %>
+      <%= link_to "Favorites" %>
+      <%= link_to "Search" %>
+    </div>
+    <div class="session-buttons">
+      <%= link_to "LOGOUT", signout_path %>
+    </div>
+  <% else %>
+    <div class="session-buttons">
+      <%= link_to "Login", signin_path %>
+      <%= link_to "Join", new_user_path %>
+    </div>
+  <% end %>
 </div>
 <% if flash[:notice] %>
   <div class="flash"><%= flash[:notice] %></div>
 <% end %>
 <%= yield %>
-
 </body>
 </html>
