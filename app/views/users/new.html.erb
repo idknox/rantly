@@ -22,14 +22,14 @@
     <%= f.text_area :bio, rows: "10" %>
     <div class="frequency-container">
     <p>How often do you rant?</p>
-    <%= f.radio_button :post_frequency, :daily %>
-    <%= f.label :post_frequency_daily, "Daily" %>
+    <%= f.radio_button :rant_frequency, :daily %>
+    <%= f.label :rant_frequency_daily, "Daily" %>
 
-    <%= f.radio_button :post_frequency, :weekly %>
-    <%= f.label :post_frequency_weekly, "Weekly" %>
+    <%= f.radio_button :rant_frequency, :weekly %>
+    <%= f.label :rant_frequency_weekly, "Weekly" %>
 
-    <%= f.radio_button :post_frequency, :monthly %>
-    <%= f.label :post_frequency_monthly, "Monthly" %>
+    <%= f.radio_button :rant_frequency, :monthly %>
+    <%= f.label :rant_frequency_monthly, "Monthly" %>
     </div>
     <%= f.submit "Register" %>
   <% end %>

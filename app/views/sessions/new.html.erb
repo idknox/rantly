@@ -1,4 +1,10 @@
-<div class="main-title">
-  <h1>Rantly</h1>
-  <h3>Let it all out</h3>
+<div class="login-container">
+  <h1>Login</h1>
+  <%= form_for @user, url: signin_path do |f| %>
+  <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.submit "LOGIN" %>
+    <% end %>
 </div>
