@@ -56,6 +56,11 @@ feature "User Registration" do
 
     click_on "Login"
     fill_in "Username", :with => "idknox"
+    fill_in "Password", :with => "12"
+    click_on "LOGIN"
+
+    expect(page).to have_content "Username / password is invalid"
+
     fill_in "Password", :with => "123"
     click_on "LOGIN"
 

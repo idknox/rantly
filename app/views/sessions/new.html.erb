@@ -1,6 +1,11 @@
 <div class="login-container">
   <h1>Login</h1>
   <%= form_for @user, url: signin_path do |f| %>
+    <% f.object.errors.full_messages.each do |error| %>
+      <div class="errors">
+        <%= error %>
+      </div>
+    <% end %>
   <%= f.label :username %>
     <%= f.text_field :username %>
     <%= f.label :password %>
