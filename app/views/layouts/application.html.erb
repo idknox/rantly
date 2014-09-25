@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="nav">
-  <div class="title">Rantly</div>
+<header>
+  <div class="title">Rant.ly</div>
   <% if current_user %>
     <div class="nav-options">
       <%= link_to "Dashboard" %>
@@ -21,14 +21,18 @@
     </div>
   <% else %>
     <div class="session-buttons">
-      <%= link_to "Login", signin_path %>
-      <%= link_to "Join", new_user_path %>
+      <div><%= link_to "Login", signin_path %></div>
+      <%= link_to new_user_path do %>
+      <div class="button">Join</div>
+      <% end %>
     </div>
   <% end %>
-</div>
+</header>
 <% if flash[:notice] %>
   <div class="flash"><%= flash[:notice] %></div>
 <% end %>
-<%= yield %>
+<div class="main">
+  <%= yield %>
+</div>
 </body>
 </html>

@@ -1,0 +1,58 @@
+.user-form-container {
+  display: flex;
+  justify-content: center;
+
+  .user-form {
+    background-color: #fff;
+    width: 60%;
+    margin: 3em 0 0 0;
+
+    h1 {
+      padding: 20px;
+    }
+
+    div {
+      margin-bottom: 5px;
+    }
+
+    .main-form {
+      border-bottom: 1px solid #000;
+      padding: 20px;
+
+      .name-inputs {
+        display: flex;
+        justify-content: space-between;
+
+        div {
+          width: 47%;
+
+          input {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #333;
+          }
+        }
+      }
+
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid #333;
+      }
+    }
+
+    .frequency-container {
+      display: flex;
+      justify-content: space-around;
+
+    }
+
+    .submit {
+      margin: 1em;
+
+      input[type=submit] {
+        width: 100%;
+      }
+    }
+  }
+}

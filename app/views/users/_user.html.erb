@@ -1,33 +1,47 @@
 <%= form_for @user do |f| %>
-  <% f.object.errors.full_messages.each do |error| %>
-    <div class="errors">
-      <%= error %>
+  <div class="main-form">
+    <% f.object.errors.full_messages.each do |error| %>
+      <div class="errors">
+        <%= error %>
+      </div>
+    <% end %>
+    <div class="name-inputs">
+      <div>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+      </div>
+      <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      </div>
     </div>
-  <% end %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-
-  <%= f.label :bio %>
-  <%= f.text_area :bio, rows: "10" %>
-  <div class="frequency-container">
+    <div>
+    <%= f.label :bio %>
+    <%= f.text_area :bio, rows: "8" %>
+    </div>
     <p>How often do you rant?</p>
-    <%= f.radio_button :rant_frequency, :daily %>
-    <%= f.label :rant_frequency_daily, "Daily" %>
 
-    <%= f.radio_button :rant_frequency, :weekly %>
-    <%= f.label :rant_frequency_weekly, "Weekly" %>
-
-    <%= f.radio_button :rant_frequency, :monthly %>
-    <%= f.label :rant_frequency_monthly, "Monthly" %>
+    <div class="frequency-container">
+      <div>
+        <%= f.radio_button :rant_frequency, :daily %>
+        <%= f.label :rant_frequency_daily, "Daily" %>
+      </div>
+      <div>
+        <%= f.radio_button :rant_frequency, :weekly %>
+        <%= f.label :rant_frequency_weekly, "Weekly" %>
+      </div>
+      <div>
+        <%= f.radio_button :rant_frequency, :monthly %>
+        <%= f.label :rant_frequency_monthly, "Monthly" %>
+      </div>
+    </div>
   </div>
-  <%= f.submit "Register" %>
+  <div class="submit">
+    <%= f.submit "REGISTER", class: "button" do %>
+    <% end %>
+  </div>
 <% end %>
