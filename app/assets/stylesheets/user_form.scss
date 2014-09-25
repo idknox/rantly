@@ -19,6 +19,14 @@
       border-bottom: 1px solid #000;
       padding: 20px;
 
+      .login-inputs {
+        input {
+          display: block;
+          width: 100%;
+          margin-bottom: 1em;
+        }
+      }
+
       .name-inputs {
         display: flex;
         justify-content: space-between;

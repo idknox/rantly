@@ -1,15 +1,25 @@
-<div class="login-container">
-  <h1>Login</h1>
-  <%= form_for @user, url: signin_path do |f| %>
-    <% f.object.errors.full_messages.each do |error| %>
-      <div class="errors">
-        <%= error %>
+<div class="user-form-container">
+  <div class="user-form">
+    <h1>Login</h1>
+    <%= form_for @user, url: signin_path do |f| %>
+      <div class="main-form">
+        <% f.object.errors.full_messages.each do |error| %>
+          <div class="errors">
+            <%= error %>
+          </div>
+        <% end %>
+        <div class="login-inputs">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+        </div>
+        <div class="login-inputs">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        </div>
+      </div>
+      <div class="submit">
+        <%= f.submit "LOGIN", class: "button" %>
       </div>
     <% end %>
-  <%= f.label :username %>
-    <%= f.text_field :username %>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <%= f.submit "LOGIN" %>
-    <% end %>
+  </div>
 </div>
