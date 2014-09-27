@@ -43,7 +43,7 @@ feature "User Registration" do
     expect(page).to have_content "Thank you for registering!"
   end
 
-  scenario "Create Usered user can log in" do
+  scenario "Registered user can log in" do
     click_on "Login"
     fill_in "Username", :with => "idknox"
     fill_in "Password", :with => "12"

@@ -10,12 +10,20 @@
 <header>
   <div class="title">Rant.ly</div>
   <% if current_user %>
-    <div class="nav-options">
-      <%= link_to "Dashboard" %>
-      <%= link_to "Following" %>
-      <%= link_to "Favorites" %>
-      <%= link_to "Search" %>
-    </div>
+    <nav>
+      <div>
+        <%= link_to "Dashboard", root_path %>
+      </div>
+      <div>
+        <%= link_to "Following", "javascript:void(0)" %>
+      </div>
+      <div>
+        <%= link_to "Favorites", "javascript:void(0)" %>
+      </div>
+      <div>
+        <%= link_to "Search", "javascript:void(0)" %>
+      </div>
+    </nav>
     <div class="session-buttons">
       <%= link_to "LOGOUT", signout_path, class: "button" %>
     </div>
@@ -23,7 +31,7 @@
     <div class="session-buttons">
       <div><%= link_to "Login", signin_path %></div>
       <%= link_to new_user_path do %>
-      <div class="button">Join</div>
+        <div class="button">Join</div>
       <% end %>
     </div>
   <% end %>

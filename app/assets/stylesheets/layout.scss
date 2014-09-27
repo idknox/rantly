@@ -36,6 +36,28 @@ header {
   a:visited {
     color: #fff;
   }
+
+  nav {
+  margin-right: 10em;
+
+    div {
+      border-right: 1px solid green;
+      padding: 5px;
+
+      &:nth-child(4) {
+        border: none;
+      }
+
+      a {
+        color: #fff;
+      }
+
+      .active {
+        color: green;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 .button {
