@@ -1,1 +1,36 @@
-<h1><%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_path(@user.id) %></h1>
+<div class="dashboard-container">
+  <div class="left-container">
+    <div class="dashboard-user-info">
+      <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
+
+      <h3>
+        <%= link_to full_name(@dashboard.user), edit_user_path(@dashboard.user.id) %>
+      </h3>
+    </div>
+    <hr>
+    <%= form_for [@dashboard.user, @dashboard.new_rant] do |f| %>
+      <%= f.label :subject, "A rant about:" %>
+      <%= f.text_field :subject %>
+      <%= f.label :body, "Rant:" %>
+      <%= f.text_area :body, rows: "14" %>
+      <%= f.submit "RANT", class: "button" %>
+    <% end %>
+  </div>
+  <div class="right-container">
+    <div class="latest-rants">
+      <h1>Latest Rants</h1>
+    </div>
+    <hr>
+    <div class="my-rants">
+      <h1>My Rants</h1>
+      <ul>
+      <%= @dashboard.my_rants.each do |rant| %>
+      <li>
+        <%= full_name(rant.user) %>
+        <%= rant.body %>
+      </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

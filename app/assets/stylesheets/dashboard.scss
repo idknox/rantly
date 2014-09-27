@@ -1,0 +1,58 @@
+.dashboard-container {
+  display: flex;
+
+  .left-container {
+    color: #B8B8B8;
+    padding: 1em;
+    width: 25%;
+
+    .dashboard-user-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 1em;
+
+      img {
+        width: 50%;
+      }
+
+      h3 {
+        margin-top: .5em;
+
+        a {
+          text-decoration: none;
+          color: #B8B8B8;
+        }
+
+      }
+
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 3px 0;
+    }
+
+
+    input, textarea {
+      width: 100%;
+    }
+
+    .button {
+      margin-top: 1em;
+    }
+  }
+
+  .right-container {
+    background-color: #fff;
+    width: 75%;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+      font-size: 3em;
+    }
+  }
+}

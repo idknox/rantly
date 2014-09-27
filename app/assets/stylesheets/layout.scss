@@ -60,6 +60,11 @@ header {
   }
 }
 
+input, textarea {
+  box-sizing: border-box;
+  border: none;
+}
+
 .button {
   background-color: green;
   display: flex;
