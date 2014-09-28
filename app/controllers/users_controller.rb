@@ -22,9 +22,6 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    puts "*" * 80
-    puts params
-    puts "*" * 80
     if user.update_attributes(user_params)
       flash[:notice] = "Profile Updated"
       redirect_to root_path
