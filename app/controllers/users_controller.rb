@@ -21,13 +21,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.new(user_params)
-
-    if @user.save
+    user = User.find(params[:id])
+    puts "*" * 80
+    puts params
+    puts "*" * 80
+    if user.update_attributes(user_params)
       flash[:notice] = "Profile Updated"
       redirect_to root_path
     else
-      render :edit
+      redirect_to :back
     end
   end
 

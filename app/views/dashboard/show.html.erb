@@ -23,14 +23,22 @@
     <hr>
     <div class="my-rants">
       <h1>My Rants</h1>
-      <ul>
-      <%= @dashboard.my_rants.each do |rant| %>
-      <li>
-        <%= full_name(rant.user) %>
-        <%= rant.body %>
-      </li>
+      <% @dashboard.my_rants.each do |rant| %>
+        <div class="my-rant">
+          <div>
+            <div class="my-rant-user-info">
+              <h2>
+                <%= rant.user.first_name %>
+              </h2>
+              <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
+            </div>
+            <p>
+              <%= rant.body %>
+            </p>
+          </div>
+          <%= link_to "Delete", user_rant_path(rant.user, rant), method: :delete %>
+        </div>
       <% end %>
-      </ul>
     </div>
   </div>
 </div>
