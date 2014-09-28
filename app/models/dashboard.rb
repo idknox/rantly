@@ -11,6 +11,10 @@ class Dashboard
   end
 
   def my_rants
-    @rants ||= user.rants
+    user.rants
+  end
+
+  def latest_rants
+    Rant.where('user_id <> ?', user.id)
   end
 end

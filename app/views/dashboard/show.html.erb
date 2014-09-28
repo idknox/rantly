@@ -8,25 +8,38 @@
       </h3>
     </div>
     <hr>
-    <%= form_for [@dashboard.user, @dashboard.new_rant] do |f| %>
-      <%= f.label :subject, "A rant about:" %>
-      <%= f.text_field :subject %>
-      <%= f.label :body, "Rant:" %>
-      <%= f.text_area :body, rows: "14" %>
-      <%= f.submit "RANT", class: "button" %>
-    <% end %>
+    <%= render @dashboard.new_rant %>
   </div>
   <div class="right-container">
-    <div class="latest-rants">
       <h1>Latest Rants</h1>
+    <hr>
+    <div class="rants">
+      <% @dashboard.latest_rants.each do |rant| %>
+        <div class="rant">
+          <div>
+            <div class="rant-user-info">
+              <h2>
+                <%= rant.user.first_name %>
+              </h2>
+              <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
+              <%= link_to "Follow", class: "follow-button" %>
+            </div>
+            <p>
+              <%= rant.body %>
+            </p>
+          </div>
+          <%= link_to "Favorite" %>
+        </div>
+      <hr>
+      <% end %>
     </div>
     <hr>
-    <div class="my-rants">
       <h1>My Rants</h1>
+    <div class="rants">
       <% @dashboard.my_rants.each do |rant| %>
-        <div class="my-rant">
+        <div class="rant">
           <div>
-            <div class="my-rant-user-info">
+            <div class="rant-user-info">
               <h2>
                 <%= rant.user.first_name %>
               </h2>

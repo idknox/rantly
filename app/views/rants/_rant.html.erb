@@ -1,0 +1,7 @@
+<%= form_for [@dashboard.user, @dashboard.new_rant] do |f| %>
+  <%= f.label :subject, "A rant about:" %>
+  <%= f.text_field :subject %>
+  <%= f.label :body, "Rant:" %>
+  <%= f.text_area :body, rows: "14" %>
+  <%= f.submit "RANT", class: "button" %>
+<% end %>

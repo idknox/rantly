@@ -8,3 +8,11 @@ def create_user(overrides = {})
                  rant_frequency: 'Daily'
                }.merge(overrides))
 end
+
+def create_rant(id, overrides = {})
+  Rant.create!({
+                 subject: 'Stuff',
+                 body: 'blah blah blah',
+                 user_id: id
+               }.merge(overrides))
+end

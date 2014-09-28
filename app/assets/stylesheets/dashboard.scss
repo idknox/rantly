@@ -54,12 +54,13 @@
       font-size: 3em;
     }
 
-    .my-rants {
+    .rants {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
+      width: 100%;
 
-      .my-rant {
+      .rant {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -69,7 +70,7 @@
           display: flex;
           align-items: center;
 
-          .my-rant-user-info {
+          .rant-user-info {
             width: 100px;
             display: flex;
             flex-direction: column;
@@ -77,6 +78,7 @@
             img {
               width: 100%;
               height: 100px;
+              margin: 5px 0 5px 0;
             }
           }
 
