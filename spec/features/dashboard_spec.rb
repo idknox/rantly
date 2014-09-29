@@ -19,18 +19,16 @@ feature "Rants" do
   end
 
   scenario "User can see others' rants" do
-    other_user = create_user(
-      {
-        username: 'test',
-        first_name: 'Bob',
-        last_name: 'Smith',
-        password: 'password',
-        bio: 'guy',
-        rant_frequency: 'Monthly'
-      }
-    )
+    other_user = create_user({
+      username: 'test',
+      first_name: 'Bob',
+      last_name: 'Smith',
+      password: 'password',
+      bio: 'guy',
+      rant_frequency: 'Monthly'
+    })
     create_rant(other_user.id, subject: 'Other Stuff', body: 'more blah')
-
-    expect(page).to have_content("Latest Rants Bob more blah")
+    visit "/"
+    expect(page).to have_content("Latest Rants Bob Follow more blah")
   end
 end

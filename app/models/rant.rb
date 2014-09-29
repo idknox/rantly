@@ -1,7 +1,7 @@
 class Rant < ActiveRecord::Base
   belongs_to :user
 
-  validate :greater_than_140_characters
+  # validate :greater_than_140_characters
 
   def greater_than_140_characters
     if body.length <= 140

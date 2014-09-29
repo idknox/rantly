@@ -8,7 +8,7 @@ feature "User Registration" do
     click_on "Join"
 
     fill_in "Username", :with => "idknox"
-    fill_in "Password", :with => "123"
+    fill_in "Password", :with => "password"
     fill_in "First name", :with => "Ian"
     fill_in "Last name", :with => "Knox"
     fill_in "Bio", :with => "Student"
@@ -30,7 +30,7 @@ feature "User Registration" do
     click_on "Join"
 
     fill_in "Username", :with => "idknox"
-    fill_in "Password", :with => "123"
+    fill_in "Password", :with => "password"
     fill_in "First name", :with => "Ian"
     fill_in "Last name", :with => "Knox"
     fill_in "Bio", :with => "Student"
@@ -51,7 +51,7 @@ feature "User Registration" do
 
     expect(page).to have_content "Username / password is invalid"
 
-    fill_in "Password", :with => "123"
+    fill_in "Password", :with => "password"
     click_on "LOGIN"
 
     expect(page).to have_content "Ian Knox"
@@ -60,7 +60,7 @@ feature "User Registration" do
   scenario "Logged in user can logout" do
     click_on "Login"
     fill_in "Username", :with => "idknox"
-    fill_in "Password", :with => "123"
+    fill_in "Password", :with => "password"
     click_on "LOGIN"
 
     click_on "LOGOUT"
@@ -71,7 +71,7 @@ feature "User Registration" do
   scenario "Logged in user can edit their profile" do
     click_on "Login"
     fill_in "Username", :with => "idknox"
-    fill_in "Password", :with => "123"
+    fill_in "Password", :with => "password"
     click_on "LOGIN"
 
     click_on "Ian Knox"
