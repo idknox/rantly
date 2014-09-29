@@ -71,7 +71,8 @@
           align-items: center;
 
           .rant-user-info {
-            width: 100px;
+            min-width: 100px;
+            max-width: 100px;
             display: flex;
             flex-direction: column;
 

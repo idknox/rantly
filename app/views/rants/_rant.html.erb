@@ -1,4 +1,9 @@
 <%= form_for [@dashboard.user, @dashboard.new_rant] do |f| %>
+  <% f.object.errors.full_messages.each do |error| %>
+    <div class="errors">
+      <%= error %>
+    </div>
+  <% end %>
   <%= f.label :subject, "A rant about:" %>
   <%= f.text_field :subject %>
   <%= f.label :body, "Rant:" %>
