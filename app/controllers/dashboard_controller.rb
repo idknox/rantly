@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def show
-    @dashboard = Dashboard.new(User.find(session[:user_id]))
+    @dashboard = Dashboard.new(current_user)
   end
 end

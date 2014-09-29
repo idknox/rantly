@@ -18,7 +18,6 @@ feature "Rants" do
       myself. It's really frustrating when you want to be heard and no one..."
 
     expect(page).to have_content("Ian Knox", "My Rants Ian #{test_rant}")
-
     click_on "Delete"
 
     expect(page).to have_content("Ian Knox", "My Rants")
