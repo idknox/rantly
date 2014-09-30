@@ -13,6 +13,10 @@ class RantsController < ApplicationController
     redirect_to :back
   end
 
+  def show
+    @rant = Rant.find(params[:id])
+  end
+
   private
 
   def rant_params

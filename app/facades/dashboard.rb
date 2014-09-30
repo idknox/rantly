@@ -17,4 +17,8 @@ class Dashboard
   def latest_rants
     Rant.where('user_id <> ?', user.id)
   end
+
+  def current_page
+    request.original_url.split("/").last
+  end
 end

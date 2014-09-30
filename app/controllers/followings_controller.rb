@@ -1,6 +1,5 @@
 class FollowingsController < ApplicationController
   def index
-    @dashboard = Dashboard.new(current_user)
   end
 
   def create

@@ -2,8 +2,8 @@
   <h1>Latest Rants</h1>
   <hr>
   <div class="rants">
-    <% @dashboard.latest_rants.each do |rant| %>
-      <div class="rant">
+    <% current_user_dashboard.latest_rants.each do |rant| %>
+      <div class="rant" id="<%= rant.id %>">
         <div>
           <div class="rant-user-info">
             <h2>
@@ -16,9 +16,11 @@
               <%= link_to "Follow", follow_path(rant.user), class: "follow-button" %>
             <% end %>
           </div>
-          <p>
-            <%= rant.body %>
-          </p>
+          <%= link_to user_rant_path(rant.user, rant) do %>
+
+              <%= rant.body %>
+
+          <% end %>
         </div>
         <%= link_to "Favorite" %>
       </div>
@@ -28,7 +30,7 @@
   <h1>My Rants</h1>
 
   <div class="rants">
-    <% @dashboard.my_rants.each do |rant| %>
+    <% current_user_dashboard.my_rants.each do |rant| %>
       <div class="rant">
         <div>
           <div class="rant-user-info">

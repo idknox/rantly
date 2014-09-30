@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'capybara/rails'
 
-feature "Rants" do
+feature "Dashboard" do
 
 
   scenario "User can create and delete a new Rant" do

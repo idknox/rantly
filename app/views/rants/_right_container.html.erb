@@ -1,0 +1,11 @@
+<div class="right-container">
+  <h1><%= @rant.subject %></h1>
+  <%= link_to "Favorite", "javascript:void(0)", class: "favorite-button" %>
+  <hr>
+  <div class="rant-container">
+    <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
+    <p>
+      <%= @rant.body %>
+    </p>
+  </div>
+</div>

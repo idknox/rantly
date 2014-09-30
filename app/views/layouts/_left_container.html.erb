@@ -1,0 +1,11 @@
+<div class="left-container">
+  <div class="dashboard-user-info">
+    <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
+
+    <h3>
+      <%= link_to full_name(current_user), edit_user_path(current_user) %>
+    </h3>
+  </div>
+  <hr>
+  <%= render current_user_dashboard.new_rant %>
+</div>
