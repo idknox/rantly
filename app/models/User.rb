@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
     has_secure_password
     validates :username, :password, :first_name, :last_name, :bio, :rant_frequency, presence: true
 
+    def following?(followee_id)
+      followings.find_by(followee_id: followee_id)
+    end
+
     def follow!(followee_id)
       followings.create!(followee_id: followee_id)
     end

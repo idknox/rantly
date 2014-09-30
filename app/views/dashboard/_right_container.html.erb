@@ -10,8 +10,11 @@
               <%= rant.user.first_name %>
             </h2>
             <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
-            <%= link_to "Follow", follow_path(rant.user), class: "follow-button" %>
-            <%= link_to "Unfollow", unfollow_path(rant.user), class: "unfollow-button" %>
+            <% if current_user.following?(rant.user.id) %>
+              <%= link_to "Unfollow", unfollow_path(rant.user), class: "unfollow-button" %>
+            <% else %>
+              <%= link_to "Follow", follow_path(rant.user), class: "follow-button" %>
+            <% end %>
           </div>
           <p>
             <%= rant.body %>
@@ -23,6 +26,7 @@
     <% end %>
   </div>
   <h1>My Rants</h1>
+
   <div class="rants">
     <% @dashboard.my_rants.each do |rant| %>
       <div class="rant">
