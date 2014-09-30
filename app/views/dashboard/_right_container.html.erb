@@ -10,7 +10,7 @@
               <%= rant.user.first_name %>
             </h2>
             <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
-            <%= link_to "Follow", class: "follow-button" %>
+            <%= link_to "Follow", user_followings_path(rant.user), method: :post, class: "follow-button" %>
           </div>
           <p>
             <%= rant.body %>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :rants
-    # resources :followers
+    resources :followings
   end
 
   resource :dashboard, :only => :show

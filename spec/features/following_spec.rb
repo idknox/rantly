@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'capybara/rails'
 
-feature "Followers" do
+feature "Following" do
 
   before :each do
     user = create_user

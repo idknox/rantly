@@ -1,0 +1,12 @@
+<div class="right-container">
+  <h1>Following</h1>
+  <hr>
+  <div class="followees">
+    <% @dashboard.user.followees.each do |followee| %>
+      <div class="followee">
+      <%= full_name(followee) %>
+        <%= link_to "Unfollow", "javascript:void(0)", method: :delete %>
+      </div>
+    <% end %>
+  </div>
+</div>
