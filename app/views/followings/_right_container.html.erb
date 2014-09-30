@@ -5,8 +5,8 @@
     <% @dashboard.user.followees.each do |followee| %>
       <div class="followee">
         <h3> <%= full_name(followee) %></h3>
-        <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
-        <%= link_to "Unfollow", "javascript:void(0)", method: :delete %>
+        <!--<img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">-->
+        <%= link_to "Unfollow", unfollow_path(followee), class: "unfollow-button" %>
       </div>
     <% end %>
   </div>

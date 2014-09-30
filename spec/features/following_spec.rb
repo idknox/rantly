@@ -26,9 +26,12 @@ feature "Following" do
     login(user)
   end
 
-  scenario "user can follow other users" do
+  scenario "user can follow and unfollow other users" do
     click_on "Follow"
     click_on "Following"
     expect(page).to have_content("Ian Knox", "Bob Smith Unfollow")
+    click_on "Unfollow"
+    expect(page).to have_content("Ian Knox")
+    expect(page).to_not have_content("Bob Smith Unfollow")
   end
 end

@@ -44,6 +44,6 @@ feature "Rants" do
     create_rant(other_user.id, subject: 'Other Stuff', body: test_rant)
 
     visit "/"
-    expect(page).to have_content("Latest Rants Bob Follow #{test_rant}")
+    expect(page).to have_content("Latest Rants Bob", " #{test_rant}")
   end
 end

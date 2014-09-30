@@ -4,12 +4,12 @@ class FollowingsController < ApplicationController
   end
 
   def create
-    following = Following.new(
-      follower_id: current_user.id,
-      followee_id: params[:user_id]
-    )
-    following.save
-    redirect_to root_path
+    User.find(current_user.id).follow!(params[:followee_id])
+    redirect_to :back
   end
 
+  def destroy
+    User.find(current_user.id).unfollow!(params[:followee_id])
+    redirect_to :back
+  end
 end
