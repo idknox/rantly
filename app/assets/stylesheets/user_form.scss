@@ -2,11 +2,11 @@
   display: flex;
   justify-content: center;
   padding: 3em 0 5em 0;
+  min-width: 60%;
 
   .user-form {
     background-color: #fff;
-    width: 60%;
-//    margin: 3em 0 3em 0;
+    width: 100%;
 
     h1 {
       padding: 20px;

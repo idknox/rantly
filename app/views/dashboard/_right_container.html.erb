@@ -7,7 +7,7 @@
         <div>
           <div class="rant-user-info">
             <h2>
-              <%= rant.user.first_name %>
+              <%= link_to rant.user.first_name, user_path(rant.user), class: "first-name" %>
             </h2>
             <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
             <% if current_user.following?(rant.user.id) %>
@@ -16,10 +16,8 @@
               <%= link_to "Follow", follow_path(rant.user), class: "follow-button" %>
             <% end %>
           </div>
-          <%= link_to user_rant_path(rant.user, rant) do %>
-
-              <%= rant.body %>
-
+          <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
+            <%= rant.truncated_body %>
           <% end %>
         </div>
         <%= link_to "Favorite" %>
@@ -40,7 +38,7 @@
             <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
           </div>
           <p>
-            <%= rant.body %>
+            <%= rant.truncated_body %>
           </p>
         </div>
         <%= link_to "Delete", user_rant_path(rant.user, rant), method: :delete %>

@@ -21,4 +21,5 @@ class Dashboard
   def current_page
     request.original_url.split("/").last
   end
+
 end

@@ -12,24 +12,24 @@
   <% if current_user %>
     <nav>
       <div>
-        <%= link_to "Dashboard", root_path %>
+        <%= link_to 'Dashboard', root_path %>
       </div>
       <div>
-        <%= link_to "Following", user_followings_path(current_user) %>
+        <%= link_to 'Following', user_followings_path(current_user) %>
       </div>
       <div>
-        <%= link_to "Favorites", "javascript:void(0)" %>
+        <%= link_to 'Favorites', 'javascript:void(0)' %>
       </div>
       <div>
-        <%= link_to "Search", "javascript:void(0)" %>
+        <%= link_to 'Search', 'javascript:void(0)' %>
       </div>
     </nav>
     <div class="session-buttons">
-      <%= link_to "LOGOUT", signout_path, class: "button" %>
+      <%= link_to 'LOGOUT', signout_path, class: 'button' %>
     </div>
   <% else %>
     <div class="session-buttons">
-      <div><%= link_to "Login", signin_path %></div>
+      <div><%= link_to 'Login', signin_path %></div>
       <%= link_to new_user_path do %>
         <div class="button">Join</div>
       <% end %>
@@ -40,7 +40,7 @@
   <div class="flash"><%= flash[:notice] %></div>
 <% end %>
 <div class="main">
-  <%= render partial: "layouts/left_container" if current_user %>
+  <%= render partial: 'dashboard/left_container' if current_user %>
   <%= yield %>
 </div>
 </body>

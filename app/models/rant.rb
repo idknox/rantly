@@ -8,4 +8,24 @@ class Rant < ActiveRecord::Base
       errors.add(:base, "Rant must be more than 140 characters")
     end
   end
+
+  def truncated_body
+    last_word_index = too_long_for_full_display? ? end_of_last_word : end_of_rant
+    body[0..last_word_index] + "..."
+  end
+
+  private
+
+  def too_long_for_full_display?
+    body.length > 500
+  end
+
+  def end_of_last_word
+    body[0..500].rindex(" ") - 1
+  end
+
+  def end_of_rant
+    body.length-1
+  end
+
 end

@@ -1,104 +1,64 @@
-.main-container {
+.right-container {
+  background-color: #fff;
+  width: 75%;
+  padding: 1em 1em 1em 1em;
   display: flex;
+  align-items: center;
+  flex-direction: column;
 
-  .left-container {
-    color: #B8B8B8;
-    padding: 1em;
-    width: 25%;
-
-    .dashboard-user-info {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-bottom: 1em;
-
-      img {
-        width: 50%;
-      }
-
-      h3 {
-        margin-top: .5em;
-
-        a {
-          text-decoration: none;
-          color: #B8B8B8;
-        }
-
-      }
-
-    }
-
-    label {
-      display: block;
-      margin: 10px 0 3px 0;
-    }
-
-    input, textarea {
-      width: 100%;
-    }
-
-    .button {
-      margin-top: 1em;
-    }
+  hr {
+    width: 100%;
   }
 
-  .right-container {
-    background-color: #fff;
-    width: 75%;
-    padding: 1em 1em 1em 1em;
+  h1 {
+    font-size: 3em;
+  }
+
+  .rants {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
 
     hr {
-      width: 100%;
+      width: 30%;
     }
 
-    h1 {
-      font-size: 3em;
+    hr:last-child {
+      width: 0;
     }
 
-    .rants {
+    .rant {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
+      align-items: flex-end;
+      margin: 1em 1em 0 1em;
 
-      hr {
-        width: 30%;
-      }
-
-      hr:nth-child(4) {
-        width: 0;
-      }
-
-      .rant {
+      div {
         display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        margin: 0 1em 1em 1em;
 
-        div {
+        .rant-user-info {
+          min-width: 60px;
+          max-width: 60px;
           display: flex;
+          flex-direction: column;
           align-items: center;
 
-          .rant-user-info {
-            min-width: 100px;
-            max-width: 100px;
-            display: flex;
-            flex-direction: column;
-
-            img {
-              width: 100%;
-              margin: 5px 0 5px 0;
-            }
-          }
-
-          a {
-            margin-left: 1em;
+          .first-name {
+            color: inherit;
             text-decoration: none;
-            color: #333;
           }
+
+          img {
+            width: 100%;
+            margin: 0 0 5px 0;
+          }
+        }
+
+        .rant-body, p {
+          margin: 5px 0 0 1em;
+          text-decoration: none;
+          color: inherit;
         }
       }
     }
