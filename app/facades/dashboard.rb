@@ -1,10 +1,12 @@
 class Dashboard
 
-  def initialize(user)
+  def initialize(user, rant=nil)
     @user = user
+    @rant = rant
   end
 
   attr_reader :user
+  attr_accessor :rant
 
   def new_rant
     @rant ||= Rant.new
@@ -17,9 +19,4 @@ class Dashboard
   def latest_rants
     Rant.where('user_id <> ?', user.id)
   end
-
-  def current_page
-    request.original_url.split("/").last
-  end
-
 end

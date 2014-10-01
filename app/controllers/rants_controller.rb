@@ -2,8 +2,10 @@ class RantsController < ApplicationController
   def create
     rant = Rant.new(rant_params)
     rant.user_id = session[:user_id]
-    rant.save
-    redirect_to root_path
+    unless rant.save
+
+    end
+    redirect_to :back
   end
 
   def destroy

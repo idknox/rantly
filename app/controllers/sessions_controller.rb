@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       @user = User.new(username: params[:user][:username])
-      @user.errors[:base] << "Username / password is invalid"
+      @user.errors[:base] << "Login failed"
       render :new
     end
   end
