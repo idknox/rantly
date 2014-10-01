@@ -1,12 +1,12 @@
 <div class="right-container">
   <h1><%= full_name(@user) %></h1>
-  <%= link_to "Follow", "javascript:void(0)", class: "favorite-button" %>
+  <%= link_to "Follow", "javascript:void(0)", class: "follow-button" %>
   <hr>
   <div class="user-profile-info">
     <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg"/>
 
     <div>
-      <h1><%= @user.rant_frequency %> Ranter</h1>
+      <%= @user.rant_frequency.capitalize %> Ranter
     </div>
   </div>
   <div class="user-profile-bio">
@@ -17,12 +17,12 @@
   <div class="user-profile-rants">
     <% @user.rants.each do |rant| %>
       <div class="user-profile-rant">
-        <h4><%= rant.subject %></h4>
+        <h2><%= rant.subject %></h2>
 
         <p>
           <%= rant.body %>
         </p>
-        <%= link_to "Favorite" %>
+        <%= link_to "Favorite", "javascript:void(0)", class: "favorite-button" %>
       </div>
     <% end %>
   </div>
