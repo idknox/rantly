@@ -1,5 +1,6 @@
 class Rant < ActiveRecord::Base
   belongs_to :user
+  has_many :favorites
 
   validate :greater_than_140_characters
 
@@ -12,6 +13,10 @@ class Rant < ActiveRecord::Base
   def truncated_body
     last_word_index = too_long_for_full_display? ? end_of_last_word : end_of_rant
     body[0..last_word_index] + "..."
+  end
+
+  def get_favorite(user)
+    favorites.find_by(user_id: user.id)
   end
 
   private

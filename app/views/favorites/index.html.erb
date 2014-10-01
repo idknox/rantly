@@ -1,0 +1,27 @@
+<div class="right-container">
+  <h1>Favorites</h1>
+  <hr>
+  <div class="favorites">
+    <% @favorites.each do |favorite| %>
+      <div class="rant" id="<%= favorite.rant.id %>">
+        <div>
+          <div class="rant-user-info">
+            <h2>
+              <%= link_to favorite.rant.user.first_name, user_path(favorite.rant.user), class: "first-name" %>
+            </h2>
+            <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
+            <% if current_user.following?(favorite.rant.user.id) %>
+              <%= link_to "Unfollow", unfollow_path(favorite.rant.user), class: "unfollow-button" %>
+            <% else %>
+              <%= link_to "Follow", follow_path(favorite.rant.user), class: "follow-button" %>
+            <% end %>
+          </div>
+          <%= link_to user_rant_path(favorite.rant.user, favorite.rant), class: "rant-body" do %>
+            <%= favorite.rant.truncated_body %>
+          <% end %>
+        </div>
+        <%= link_to "Favorite" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -3,6 +3,11 @@
     <div><h1>Rantly</h1></div>
     <p>Let it all out</p>
   </div>
+  <% if user_has_visited_and_not_registered? %>
+  <div class="welcome-back">
+    Welcome back! Please consider registering to begin your ranting!
+  </div>
+    <% end %>
   <div class="quotes-container">
     <img src="https://pbs.twimg.com/profile_images/3640983126/2eab5ffd09240704352ac1b689e08d05.jpeg"/>
 

@@ -6,11 +6,14 @@ Rails.application.routes.draw do
   post "/signin" => "sessions#create"
   get "/:followee_id/follow" => "followings#create", as: :follow
   get "/:followee_id/unfollow" => "followings#destroy", as: :unfollow
+  get"/:user_id/favorites" => "favorites#index", as: :favorites
 
   resources :users do
-    resources :rants
-    resources :followings, :only => :index
+    resources :rants do
+      resources :favorites, only: [:create, :destroy]
+    end
+    resources :followings, only: :index
   end
 
-  resource :dashboard, :only => :show
+  resource :dashboard, only: :show
 end
