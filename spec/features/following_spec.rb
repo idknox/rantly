@@ -38,5 +38,8 @@ feature "Following" do
     click_on "Follow"
     click_on "Following"
     expect(page).to have_content("Ian Knox", "Bob Smith Unfollow")
+    visit user_path(@other_user.id)
+    click_on "Unfollow"
+    expect(page).to_not have_content("Bob Smith Unfollow")
   end
 end
