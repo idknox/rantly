@@ -83,15 +83,28 @@ feature "User Registration" do
     expect(page).to have_content "Dashboard", "Ian Knox"
   end
 
-  scenario "User can view another's profile" do
+  scenario "User can view another's profile from dashboard" do
     user = create_user
     other_user = create_user(
       {username: 'test', first_name: 'Bob', last_name: 'Smith', password: 'password', bio: 'guy', rant_frequency: 'Monthly'}
     )
-    create_rant(other_user.id, subject: 'Other Stuff')
+    rant = create_rant(other_user.id, subject: 'Other Stuff')
     login(user)
 
     click_on other_user.first_name
-    expect(page).to have_content('')
+    expect(page).to have_content(other_user.first_name + " " + other_user.last_name, other_user.bio, rant)
+  end
+
+  scenario "User can view another's profile from rant page" do
+    user = create_user
+    other_user = create_user(
+      {username: 'test', first_name: 'Bob', last_name: 'Smith', password: 'password', bio: 'guy', rant_frequency: 'Monthly'}
+    )
+    rant = create_rant(other_user.id, subject: 'Other Stuff')
+    login(user)
+    click_on rant.body
+    click_on other_user.first_name
+    expect(page).to have_content(other_user.first_name + " " + other_user.last_name, other_user.bio, rant)
+
   end
 end

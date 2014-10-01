@@ -3,12 +3,23 @@
 }
 
 .rant-container {
-padding: .5em;
+  padding: .5em;
 
-  img {
+  .rant-user {
     width: 20%;
-    margin: 0 1.5em .5em 0;
     float: left;
+    margin: 0 1em 0 0;
+    text-align: center;
+
+    a {
+      text-decoration: none;
+      font-size: 2em;
+    }
+
+    img {
+      margin-top: .5em;
+      width: 100%;
+    }
   }
   p {
     margin: 0;

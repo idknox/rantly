@@ -3,8 +3,11 @@
   <%= link_to "Favorite", "javascript:void(0)", class: "favorite-button" %>
   <hr>
   <div class="rant-container">
+    <div class="rant-user">
+    <%= link_to @rant.user.first_name, user_path(@rant.user) %>
     <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
-    <p>
+    </div>
+      <p>
       <%= @rant.body %>
     </p>
   </div>
