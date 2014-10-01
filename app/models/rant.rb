@@ -19,6 +19,10 @@ class Rant < ActiveRecord::Base
     favorites.find_by(user_id: user.id)
   end
 
+  def favorite_count
+    favorites.length
+  end
+
   private
 
   def too_long_for_full_display?
@@ -32,5 +36,4 @@ class Rant < ActiveRecord::Base
   def end_of_rant
     body.length-1
   end
-
 end

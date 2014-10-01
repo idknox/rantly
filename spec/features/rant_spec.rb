@@ -25,3 +25,4 @@ feature "Rants" do
     expect(page).to have_content($rant.body, $other_user.first_name, "Unfavorite")
   end
 end
+

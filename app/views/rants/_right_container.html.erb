@@ -1,9 +1,9 @@
 <div class="right-container">
   <h1><%= @rant.subject %></h1>
   <% if @rant.get_favorite(current_user) %>
-    <%= link_to "Unfavorite", user_rant_favorite_path(current_user, @rant, @rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
+    <%= link_to "Unfavorite", user_rant_favorite_path(@rant.user, @rant, @rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
   <% else %>
-    <%= link_to "Favorite", user_rant_favorites_path(current_user, @rant), method: :post, class: "favorite-button" %>
+    <%= link_to "Favorite", user_rant_favorites_path(@rant.user, @rant), method: :post, class: "favorite-button" %>
   <% end %>
   <hr>
   <div class="rant-container">
