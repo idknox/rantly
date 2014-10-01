@@ -84,7 +84,7 @@ feature "User Registration" do
   end
 
   scenario "User can view another's profile from dashboard" do
-    user = create_user
+    user = create_user(username: "me")
     other_user = create_user(
       {username: 'test', first_name: 'Bob', last_name: 'Smith', password: 'password', bio: 'guy', rant_frequency: 'Monthly'}
     )
@@ -96,7 +96,7 @@ feature "User Registration" do
   end
 
   scenario "User can view another's profile from rant page" do
-    user = create_user
+    user = create_user(username: "me")
     other_user = create_user(
       {username: 'test', first_name: 'Bob', last_name: 'Smith', password: 'password', bio: 'guy', rant_frequency: 'Monthly'}
     )

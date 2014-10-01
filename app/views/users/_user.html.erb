@@ -7,21 +7,29 @@
     <% end %>
     <div class="name-inputs">
       <div>
-        <%= f.label :username %>
-        <%= f.text_field :username %>
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name %>
+        <div>
+          <%= f.label :username %>
+          <%= f.text_field :username %>
+        </div>
+        <div>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </div>
       </div>
       <div>
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
+        <div>
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name %>
+        </div>
+        <div>
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name %>
+        </div>
       </div>
     </div>
     <div>
-    <%= f.label :bio %>
-    <%= f.text_area :bio, rows: "8" %>
+      <%= f.label :bio %>
+      <%= f.text_area :bio, rows: "8" %>
     </div>
     <p>How often do you rant?</p>
 

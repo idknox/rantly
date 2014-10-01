@@ -30,18 +30,23 @@
 
       .name-inputs {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        width: 100%;
 
         div {
-          width: 47%;
+          display: flex;
+          justify-content: space-between;
 
-          input {
-            width: 100%;
-            border: 1px solid #333;
+          div {
+          width: 47%;
+            display: flex;
+            flex-direction: column;
+            input {
+              border: 1px solid #333;
+            }
           }
         }
       }
-
       textarea {
         width: 100%;
         border: 1px solid #333;
