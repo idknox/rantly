@@ -4,37 +4,35 @@
   <div class="search">
     <%= form_tag search_path, method: :get %>
     <%= text_field_tag 'search', 'search for ranter or rant content', value: @search %>
-    <%= submit_tag 'Search', class: 'button' %>
+    <%= submit_tag 'search', class: 'button', value: 'SEARCH' %>
   </div>
-
-<div class="rants">
-  <% @rants.each do |rant| %>
-    <div class="rant" id="<%= rant.id %>">
-      <div>
-        <div class="rant-user-info">
-          <h2>
-            <%= link_to rant.user.first_name, user_path(rant.user), class: "first-name" %>
-          </h2>
-          <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
+  <div class="rants">
+    <% @rants.each do |rant| %>
+      <div class="rant" id="<%= rant.id %>">
+        <div>
+          <div class="rant-user-info">
+            <h2>
+              <%= link_to rant.user.first_name, user_path(rant.user), class: "first-name" %>
+            </h2>
+            <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
+          </div>
+          <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
+            <%= rant.truncated_body %>
+          <% end %>
         </div>
-        <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
-          <%= rant.truncated_body %>
-        <% end %>
+        <div class="rant-buttons">
+          <% if current_user.following?(rant.user.id) %>
+            <%= link_to "Unfollow", unfollow_path(rant.user), class: "unfollow-button" %>
+          <% else %>
+            <%= link_to "Follow", follow_path(rant.user), class: "follow-button" %>
+          <% end %>
+          <% if rant.get_favorite(current_user) %>
+            <%= link_to "Unfavorite", user_rant_favorite_path(rant.user, rant, rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
+          <% else %>
+            <%= link_to "Favorite", user_rant_favorites_path(rant.user, rant), method: :post, class: "favorite-button" %>
+          <% end %>
+        </div>
       </div>
-      <div class="rant-buttons">
-        <% if current_user.following?(rant.user.id) %>
-          <%= link_to "Unfollow", unfollow_path(rant.user), class: "unfollow-button" %>
-        <% else %>
-          <%= link_to "Follow", follow_path(rant.user), class: "follow-button" %>
-        <% end %>
-        <% if rant.get_favorite(current_user) %>
-          <%= link_to "Unfavorite", user_rant_favorite_path(rant.user, rant, rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
-        <% else %>
-          <%= link_to "Favorite", user_rant_favorites_path(rant.user, rant), method: :post, class: "favorite-button" %>
-        <% end %>
-      </div>
-    </div>
-    <hr class="rant-separator">
-  <% end %>
-</div>
+    <% end %>
+  </div>
 </div>
