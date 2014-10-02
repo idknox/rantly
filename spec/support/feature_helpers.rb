@@ -8,4 +8,7 @@ module FeatureHelpers
     click_on "LOGIN"
   end
 
+  def full_name(user)
+    [user.first_name, user.last_name].join(" ")
+  end
 end
