@@ -42,9 +42,28 @@
             </h2>
             <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
           </div>
-          <p>
+          <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
             <%= rant.truncated_body %>
-          </p>
+          <% end %>
+        </div>
+        <%= link_to "Delete", user_rant_path(rant.user, rant), method: :delete %>
+      </div>
+    <% end %>
+  </div>
+  <h1>Mentioned Rants</h1>
+  <div class="rants">
+    <% @dashboard.mentioned_rants(current_user).each do |rant| %>
+      <div class="rant">
+        <div>
+          <div class="rant-user-info">
+            <h2>
+              <%= rant.user.first_name %>
+            </h2>
+            <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
+          </div>
+          <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
+            <%= rant.truncated_body %>
+          <% end %>
         </div>
         <%= link_to "Delete", user_rant_path(rant.user, rant), method: :delete %>
       </div>

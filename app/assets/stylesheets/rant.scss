@@ -11,7 +11,8 @@
     margin: 0 1em 0 0;
     text-align: center;
 
-    a {
+    a, a:visited {
+      color: #333;
       text-decoration: none;
       font-size: 2em;
     }
