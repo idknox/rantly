@@ -1,11 +1,14 @@
 class RantsController < ApplicationController
   def create
-    rant = Rant.new(rant_params)
-    rant.user_id = session[:user_id]
-    unless rant.save
-
+    @rant = Rant.new(rant_params)
+    @rant.user_id = current_user.id
+    if @rant.save
+      flash[:notice] = "Rant created"
+      redirect_to root_path
+    else
+      @dashboard = Dashboard.new(current_user)
+      render 'dashboard/show'
     end
-    redirect_to :back
   end
 
   def destroy

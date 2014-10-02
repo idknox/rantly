@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   post "/signin" => "sessions#create"
   get "/:followee_id/follow" => "followings#create", as: :follow
   get "/:followee_id/unfollow" => "followings#destroy", as: :unfollow
-  get"/:user_id/favorites" => "favorites#index", as: :favorites
-
+  get "/:user_id/favorites" => "favorites#index", as: :favorites
+  get "/search/results" => "search#show", as: :search
 
   resources :users do
     resources :rants do
@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     resources :followings, only: :index
   end
 
+  resource :search, only: :new
   resource :dashboard, only: :show
 end
