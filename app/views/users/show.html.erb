@@ -30,7 +30,8 @@
           <%= link_to "Unfavorite", user_rant_favorite_path(rant.user, rant, rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
         <% else %>
           <%= link_to "Favorite", user_rant_favorites_path(rant.user, rant), method: :post, class: "favorite-button" %>
-        <% end %>      </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

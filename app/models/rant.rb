@@ -23,6 +23,19 @@ class Rant < ActiveRecord::Base
     favorites.length
   end
 
+  def self.search_all(search)
+    joins(:user).where(
+      'users.username = ? OR users.first_name = ?' +
+        'OR users.last_name = ? OR rants.body LIKE ?' +
+        'OR rants.subject LIKE ?',
+      search,
+      search,
+      search,
+      '%' + search + '%',
+      '%' + search + '%'
+    )
+  end
+
   private
 
   def too_long_for_full_display?

@@ -1,0 +1,9 @@
+<div class="right-container">
+  <h1>Search</h1>
+  <hr>
+  <div class="search">
+    <%= form_tag search_path, method: :get %>
+      <%= text_field_tag 'search', 'search for ranter or rant content', value: @search %>
+      <%= submit_tag 'Search', class: 'button' %>
+  </div>
+</div>
