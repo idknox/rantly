@@ -7,7 +7,7 @@
   <% end %>
   <hr>
   <div class="user-profile-info">
-    <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg"/>
+    <%= image_tag image_path(@user), alt: 'No Image' %>
 
     <div>
       <%= @user.rant_frequency.capitalize %> Ranter

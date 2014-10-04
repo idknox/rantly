@@ -9,7 +9,7 @@
   <div class="rant-container">
     <div class="rant-user">
       <%= link_to @rant.user.first_name, user_path(@rant.user) %>
-      <img src="https://pbs.twimg.com/profile_images/479692669505916928/1gNBxBfY.jpeg">
+      <%= image_tag image_path(@rant.user), alt: 'No Image' %>
     </div>
     <p>
       <%= @rant.body %>

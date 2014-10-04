@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/:followee_id/unfollow" => "followings#destroy", as: :unfollow
   get "/:user_id/favorites" => "favorites#index", as: :favorites
   get "/search/results" => "searches#show", as: :search
+  get "/users/:user_id/image" => "dashboard#display_image", as: :image
 
   resources :users do
     resources :rants do

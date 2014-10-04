@@ -47,6 +47,10 @@
         <%= f.label :rant_frequency_monthly, "Monthly" %>
       </div>
     </div>
+    <div>
+      <%= f.label :image %>
+      <%= f.file_field :image, multiple: true %>
+    </div>
   </div>
   <div class="submit">
     <%= f.submit class: "button" do %>
