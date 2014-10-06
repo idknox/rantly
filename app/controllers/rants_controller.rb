@@ -4,7 +4,7 @@ class RantsController < ApplicationController
     @rant.user_id = current_user.id
     if @rant.save
       flash[:notice] = "Rant created"
-      redirect_to :back
+      redirect_to root_path
     else
       @dashboard = Dashboard.new(current_user)
       render 'dashboard/show'

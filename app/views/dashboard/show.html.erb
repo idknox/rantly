@@ -1,3 +1,20 @@
+<%= content_for :nav do %>
+  <nav>
+    <div>
+      <%= link_to 'Dashboard', root_path, class: 'active' %>
+    </div>
+    <div>
+      <%= link_to 'Following', user_followings_path(current_user) %>
+    </div>
+    <div>
+      <%= link_to 'Favorites', favorites_path(current_user) %>
+    </div>
+    <div>
+      <%= link_to 'Search', new_search_path %>
+    </div>
+  </nav>
+<% end %>
+
 <div class="right-container">
   <h1>Latest Rants</h1>
   <hr>
@@ -32,6 +49,7 @@
     <% end %>
   </div>
   <h1>My Rants</h1>
+
   <div class="rants">
     <% @dashboard.my_rants.each do |rant| %>
       <div class="rant">
@@ -51,6 +69,7 @@
     <% end %>
   </div>
   <h1>Mentioned Rants</h1>
+
   <div class="rants">
     <% @dashboard.mentioned_rants(current_user).each do |rant| %>
       <div class="rant">
