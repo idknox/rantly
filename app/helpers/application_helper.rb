@@ -4,6 +4,10 @@ module ApplicationHelper
     user_has_visited? && !user_has_registered?
   end
 
+  def on_user_edit_page?
+    current_page? edit_user_path(current_user)
+  end
+
   def on_dashboard_page?
     current_page? root_path
   end

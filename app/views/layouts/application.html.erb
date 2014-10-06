@@ -40,7 +40,7 @@
   <div class="flash"><%= flash[:notice] %></div>
 <% end %>
 <div class="main">
-  <%= render partial: 'dashboard/left_container' if current_user %>
+  <%= render partial: 'dashboard/left_container' if current_user && !on_user_edit_page? %>
   <%= yield %>
 </div>
 </body>
