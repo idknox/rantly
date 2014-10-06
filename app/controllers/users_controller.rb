@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         data: params[:user][:image].first.read
       ) if params[:user][:image]
 
-      cookies.permanent[:registered] = true
+      set_registered_cookie
       flash[:notice] = "Thank you for registering!"
       redirect_to root_path
     else
@@ -51,5 +51,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency)
+  end
+
+  def set_registered_cookie
+    cookies.permanent[:registered] = true
   end
 end
