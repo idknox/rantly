@@ -1,18 +1,18 @@
 <div class="right-container">
-  <h1><%= @rant.subject %></h1>
-  <% if @rant.get_favorite(current_user) %>
-    <%= link_to "Unfavorite", user_rant_favorite_path(@rant.user, @rant, @rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
+  <h1><%= @full_rant.subject %></h1>
+  <% if @full_rant.get_favorite(current_user) %>
+    <%= link_to "Unfavorite", user_rant_favorite_path(@full_rant.user, @full_rant, @full_rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
   <% else %>
-    <%= link_to "Favorite", user_rant_favorites_path(@rant.user, @rant), method: :post, class: "favorite-button" %>
+    <%= link_to "Favorite", user_rant_favorites_path(@full_rant.user, @full_rant), method: :post, class: "favorite-button" %>
   <% end %>
   <hr>
   <div class="rant-container">
     <div class="rant-user">
-      <%= link_to @rant.user.first_name, user_path(@rant.user) %>
-      <%= image_tag image_path(@rant.user), alt: 'No Image' %>
+      <%= link_to @full_rant.user.first_name, user_path(@full_rant.user) %>
+      <%= image_tag image_path(@full_rant.user), alt: 'No Image' %>
     </div>
     <p>
-      <%= @rant.body %>
+      <%= markdown(@full_rant.body) %>
     </p>
   </div>
 </div>
