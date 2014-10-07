@@ -4,6 +4,7 @@
 
 .rant-container {
   padding: .5em;
+  width: 100%;
 
   .rant-user {
     width: 20%;
@@ -24,5 +25,6 @@
   }
   p {
     margin: 0;
+    word-wrap: break-word;
   }
 }

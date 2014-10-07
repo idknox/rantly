@@ -64,7 +64,7 @@
               <%= image_tag image_path(current_user) %>
             </div>
             <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
-              <%= rant.truncated_body %>
+             <p><%= rant.truncated_body %></p>
             <% end %>
           </div>
           <%= link_to "Delete", user_rant_path(rant.user, rant), method: :delete %>
