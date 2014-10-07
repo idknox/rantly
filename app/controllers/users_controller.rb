@@ -28,18 +28,21 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update_attributes(user_params)
-      Image.create!(
-        user_id: user.id,
-        filename: params[:user][:image].first.original_filename,
-        content_type: params[:user][:image].first.content_type,
-        data: params[:user][:image].first.read
-      )
+    @user = User.find(params[:id])
+      @user.force_submit = true
+    if @user.update_attributes(user_params_without_image)
+      if params[:user][:image]
+        Image.create!(
+          user_id: user.id,
+          filename: params[:user][:image].first.original_filename,
+          content_type: params[:user][:image].first.content_type,
+          data: params[:user][:image].first.read
+        )
+      end
       flash[:notice] = "Profile Updated"
       redirect_to root_path
     else
-      redirect_to :back
+      render :edit
     end
   end
 
@@ -51,6 +54,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency, :image)
+  end
+
+  def user_params_without_image
+    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency)
   end
 
   def set_registered_cookie

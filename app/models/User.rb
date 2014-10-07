@@ -7,9 +7,10 @@ class User < ActiveRecord::Base
 
   has_secure_password
   validates :username, :password, :first_name, :last_name, :bio, :rant_frequency, presence: true
-  validates :username, uniqueness: true
+  validates :username, uniqueness: true, unless: :force_submit
   validates :password, length: {minimum: 8}
 
+  attr_accessor :force_submit
 
   def following?(followee_id)
     followings.find_by(followee_id: followee_id)
