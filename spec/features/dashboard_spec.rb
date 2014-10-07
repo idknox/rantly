@@ -31,4 +31,11 @@ feature "Dashboard" do
     login(user)
     expect(page).to have_content("Latest Rants Bob", " #{rant.body}")
   end
+
+  scenario "User can go to dashboard via logo" do
+    user = create_user
+    login(user)
+    click_on 'Rant.ly'
+    expect(page).to have_content 'A rant about', 'Ian Knox'
+  end
 end

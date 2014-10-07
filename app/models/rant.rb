@@ -43,7 +43,7 @@ class Rant < ActiveRecord::Base
   end
 
   def end_of_last_word
-    body[0..500].rindex(" ") - 1
+    (body[0..500].rindex(" ") || body.length) - 1
   end
 
   def end_of_rant

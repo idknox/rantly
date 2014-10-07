@@ -28,6 +28,10 @@ header {
     padding: 1em 2em 1em 1.5em;
     border-right: 1px solid green;
     font-size: 1em;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   a:nth-child(2) {
@@ -38,7 +42,7 @@ header {
   }
 
   nav {
-  margin-right: 10em;
+    margin-right: 10em;
 
     div {
       border-right: 1px solid green;
