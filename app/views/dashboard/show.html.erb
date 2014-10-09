@@ -30,7 +30,7 @@
               <%= image_tag image_path(rant.user), alt: 'No Image' %>
             </div>
             <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
-              <%= rant.truncated_body %>
+              <%= rant.body_truncated_if_needed %>
             <% end %>
           </div>
           <div class="rant-buttons">
@@ -66,7 +66,7 @@
               <%= image_tag image_path(current_user) %>
             </div>
             <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
-             <p><%= rant.truncated_body %></p>
+             <p><%= rant.body_truncated_if_needed %></p>
             <% end %>
           </div>
           <%= link_to "Delete", user_rant_path(rant.user, rant), method: :delete %>
@@ -88,7 +88,7 @@
             <%= image_tag image_path(rant.user), alt: 'No Image' %>
           </div>
           <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
-            <%= rant.truncated_body %>
+            <%= rant.body_truncated_if_needed %>
           <% end %>
         </div>
         <% if rant.get_favorite(current_user) %>

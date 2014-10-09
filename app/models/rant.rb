@@ -11,9 +11,8 @@ class Rant < ActiveRecord::Base
     end
   end
 
-  def truncated_body
-    last_word_index = too_long_for_full_display? ? end_of_last_word : end_of_rant
-    body[0..last_word_index] + "..."
+  def body_truncated_if_needed
+    too_long_for_full_display? ? truncated_body : body
   end
 
   def get_favorite(user)
@@ -39,15 +38,13 @@ class Rant < ActiveRecord::Base
 
   private
 
+
   def too_long_for_full_display?
-    body.length > 500
+    body.split(' ').length > 300
   end
 
-  def end_of_last_word
-    (body[0..500].rindex(" ") || body.length) - 1
+  def truncated_body
+    body.split(' ')[0..300].join(' ') + '...'
   end
 
-  def end_of_rant
-    body.length-1
-  end
 end

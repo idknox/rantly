@@ -6,7 +6,7 @@
     <% else %>
       <%= link_to "Follow", follow_path(@user), class: "follow-button" %>
     <% end %>
-  <%= end %>
+  <% end %>
   <hr>
   <div class="user-profile-info">
     <%= image_tag image_path(@user), alt: 'No Image' %>
@@ -24,10 +24,11 @@
     <% @user.rants_sorted_by_favorites.each do |rant| %>
       <div class="user-profile-rant">
         <h2><%= rant.subject %></h2>
-
-        <p>
-          <%= rant.body %>
-        </p>
+        <%= link_to user_rant_path(@user, rant), class: "rant-body" do %>
+          <p>
+            <%= rant.body_truncated_if_needed %>
+          </p>
+        <% end %>
         <% if rant.get_favorite(current_user) %>
           <%= link_to "#{rant.favorite_count} - Unfavorite", user_rant_favorite_path(rant.user, rant, rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
         <% else %>
