@@ -8,13 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      Image.create!(
-        user_id: @user.id,
-        filename: params[:user][:image].first.original_filename,
-        content_type: params[:user][:image].first.content_type,
-        data: params[:user][:image].first.read
-      ) if params[:user][:image]
-
+      @user.create_image(params[:user][:image])
       set_registered_cookie
       flash[:notice] = "Thank you for registering!"
       redirect_to root_path
@@ -29,16 +23,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-      @user.force_submit = true
+    @user.force_submit = true
     if @user.update_attributes(user_params_without_image)
-      if params[:user][:image]
-        Image.create!(
-          user_id: @user.id,
-          filename: params[:user][:image].first.original_filename,
-          content_type: params[:user][:image].first.content_type,
-          data: params[:user][:image].first.read
-        )
-      end
+      @user.create_image(params[:user][:image])
       flash[:notice] = "Profile Updated"
       redirect_to root_path
     else
@@ -63,4 +50,5 @@ class UsersController < ApplicationController
   def set_registered_cookie
     cookies.permanent[:registered] = true
   end
+
 end

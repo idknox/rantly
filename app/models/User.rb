@@ -29,4 +29,12 @@ class User < ActiveRecord::Base
     rants.sort_by { |rant| rant.favorite_count }.reverse
   end
 
+  def create_image(image)
+    Image.create!(
+      user_id: id,
+      filename: image.first.original_filename,
+      content_type: image.first.content_type,
+      data: image.first.read
+    ) if image
+  end
 end
