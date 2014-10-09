@@ -1,19 +1,34 @@
 <div class="right-container">
-  <h1><%= @full_rant.subject %></h1>
-  <% if @full_rant.get_favorite(current_user) %>
-    <%= link_to "#{rant.favorite_count} - Unfavorite", user_rant_favorite_path(@full_rant.user, @full_rant, @full_rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
+  <h1><%= @rant_dashboard.rant.subject %></h1>
+  <% if @rant_dashboard.rant.get_favorite(current_user) %>
+    <%= link_to "#{@rant_dashboard.rant.favorite_count} - Unfavorite", user_rant_favorite_path(@rant_dashboard.rant.user, @rant_dashboard.rant, @rant_dashboard.rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
   <% else %>
-    <%= link_to "#{rant.favorite_count} - Favorite", user_rant_favorites_path(@full_rant.user, @full_rant), method: :post, class: "favorite-button" %>
+    <%= link_to "#{@rant_dashboard.rant.favorite_count} - Favorite", user_rant_favorites_path(@rant_dashboard.rant.user, @rant_dashboard.rant), method: :post, class: "favorite-button" %>
   <% end %>
   <hr>
   <div class="rant-container">
     <div class="rant-user">
-      <%= link_to @full_rant.user.first_name, user_path(@full_rant.user) %>
-      <%= image_tag image_path(@full_rant.user), alt: 'No Image' %>
+      <%= link_to @rant_dashboard.rant.user.first_name, user_path(@rant_dashboard.rant.user) %>
+      <%= image_tag image_path(@rant_dashboard.rant.user), alt: 'No Image' %>
     </div>
     <p>
-      <%= markdown(@full_rant.body) %>
+      <%= markdown(@rant_dashboard.rant.body) %>
     </p>
+  </div>
+  <hr class="rant-separator">
+  <div class="comments">
+    <% @rant_dashboard.rant.comments.each do |comment| %>
+      <div class="comment">
+        <%= image_tag image_path(comment.user) %>
+        <%= comment.body %>
+      </div>
+    <% end %>
+  </div>
+  <div class="new-comment">
+    <%= form_for @rant_dashboard.new_comment, url: user_rant_comments_path(current_user, @rant_dashboard.rant) do |f| %>
+      <%= f.text_field :body %>
+      <%= f.submit 'RANT BACK', class: 'button' %>
+    <% end %>
   </div>
 </div>
 

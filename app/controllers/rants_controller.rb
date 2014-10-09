@@ -19,7 +19,7 @@ class RantsController < ApplicationController
   end
 
   def show
-    @full_rant = Rant.find(params[:id])
+    @rant_dashboard = RantDashboard.new(Rant.find(params[:id]))
   end
 
   private

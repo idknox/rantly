@@ -10,9 +10,11 @@ Rails.application.routes.draw do
   get "/search/results" => "searches#show", as: :search
   get "/users/:user_id/image" => "dashboard#display_image", as: :image
 
+
   resources :users do
     resources :rants do
       resources :favorites, only: [:create, :destroy]
+      resource :comments, only: :create
     end
     resources :followings, only: :index
   end

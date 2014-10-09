@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params_without_image)
       if params[:user][:image]
         Image.create!(
-          user_id: user.id,
+          user_id: @user.id,
           filename: params[:user][:image].first.original_filename,
           content_type: params[:user][:image].first.content_type,
           data: params[:user][:image].first.read

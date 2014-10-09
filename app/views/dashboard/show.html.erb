@@ -34,11 +34,13 @@
             <% end %>
           </div>
           <div class="rant-buttons">
+            <% unless is_me?(rant.user) %>
             <% if current_user.following?(rant.user.id) %>
               <%= link_to "Unfollow", unfollow_path(rant.user), class: "unfollow-button" %>
             <% else %>
               <%= link_to "Follow", follow_path(rant.user), class: "follow-button" %>
             <% end %>
+              <% end %>
             <% if rant.get_favorite(current_user) %>
               <%= link_to "#{rant.favorite_count} - Unfavorite", user_rant_favorite_path(rant.user, rant, rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
             <% else %>

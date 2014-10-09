@@ -23,8 +23,38 @@
       width: 100%;
     }
   }
+
   p {
     margin: 0;
     word-wrap: break-word;
+  }
+}
+
+.comments {
+  width: 100%;
+
+  .comment {
+    display: flex;
+    align-items: flex-start;
+    margin: 1em 0 1em 0;
+
+    img {
+      min-width: 60px;
+      max-width: 60px;
+      margin-right: 1em;
+    }
+  }
+}
+
+.new-comment {
+  width: 100%;
+
+  input[type=text] {
+    width: 100%;
+  }
+
+  input[type=submit] {
+    float: right;
+    margin-top: .5em;
   }
 }

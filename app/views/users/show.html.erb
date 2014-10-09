@@ -1,10 +1,12 @@
 <div class="right-container">
   <h1><%= full_name(@user) %></h1>
-  <% if current_user.following?(@user.id) %>
-    <%= link_to "Unfollow", unfollow_path(@user), class: "unfollow-button" %>
-  <% else %>
-    <%= link_to "Follow", follow_path(@user), class: "follow-button" %>
-  <% end %>
+  <% unless is_me?(@user) %>
+    <% if current_user.following?(@user.id) %>
+      <%= link_to "Unfollow", unfollow_path(@user), class: "unfollow-button" %>
+    <% else %>
+      <%= link_to "Follow", follow_path(@user), class: "follow-button" %>
+    <% end %>
+  <%= end %>
   <hr>
   <div class="user-profile-info">
     <%= image_tag image_path(@user), alt: 'No Image' %>

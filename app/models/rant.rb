@@ -1,6 +1,7 @@
 class Rant < ActiveRecord::Base
   belongs_to :user
   has_many :favorites
+  has_many :comments
 
   validate :greater_than_140_characters
 

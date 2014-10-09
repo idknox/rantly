@@ -1,6 +1,6 @@
 <div class="left-container">
   <div class="dashboard-user-info">
-    <%= image_tag image_path(current_user) %>
+    <%= image_tag image_path(current_user), alt: 'http://i.imgur.com/LuraESW.jpg' %>
     <h3>
       <%= link_to full_name(current_user), edit_user_path(current_user) %>
     </h3>
