@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "/users/:user_id/favorites" => "favorites#index", as: :favorites
   get "/search/results" => "searches#show", as: :search
   get "/users/:user_id/image" => "dashboard#display_image", as: :image
-
+  get "/admin/rants" => "admin#rants"
 
   resources :users do
     resources :rants do

@@ -24,6 +24,10 @@ module ApplicationHelper
     (current_page? new_search_path) || (current_page? search_path)
   end
 
+  def on_admin_rants_page?
+    current_page? admin_rants_path
+  end
+
   def markdown(text)
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(text).html_safe
   end

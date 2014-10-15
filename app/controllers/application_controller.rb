@@ -14,6 +14,11 @@ class ApplicationController < ActionController::Base
     @rant ||= Rant.new
   end
 
+  def you_are_admin?
+    current_user.admin
+  end
+
   helper_method :current_user
   helper_method :new_rant
+  helper_method :you_are_admin?
 end

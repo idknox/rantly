@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   end
 
   def user_params_without_image
-    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency)
+    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency, :admin)
   end
 
   def set_registered_cookie

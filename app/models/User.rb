@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :rants
+  has_many :rants, dependent: :destroy
   has_many :favorites
   has_many :followings, foreign_key: "follower_id", dependent: :destroy
   has_many :followees, through: :followings
