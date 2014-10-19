@@ -1,0 +1,48 @@
+<div class="admin-rants">
+  <h1>Rants</h1>
+
+  <div class="admin-rant-filters">
+    <div>
+      <%= link_to 'All', admin_rants_path, class: 'filter-button' %><%= link_to 'Spam', admin_rants_path(spam: true), class: 'filter-button' %>
+    </div>
+    <div>
+      <%= select_date %>
+    </div>
+    <h4>To</h4>
+
+    <div>
+      <%= select_date %>
+    </div>
+    <%= link_to "Filter", '#', class: 'filter-button' %>
+  </div>
+  <table class="admin-rants-table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Title</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @rants.each do |rant| %>
+      <tr>
+        <td><%= full_name(rant.user) %></td>
+        <td><%= rant.user.username %></td>
+        <td><%= rant.subject %></td>
+        <td>
+          <%= link_to 'View', user_rant_path(rant.user, rant) %>
+        </td>
+      </tr>
+    <% end %>
+    <%= remaining_table_row_count(@rants).each do |row| %>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

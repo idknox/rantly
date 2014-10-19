@@ -19,6 +19,7 @@ feature "Following" do
 
     visit root_path
     click_on "Unfollow"
+    click_on "Following"
     expect(page).to_not have_content(full_name(@other_user), @other_user.bio, "Unfollow")
   end
 

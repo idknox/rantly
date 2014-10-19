@@ -6,6 +6,6 @@ class AdminController < ApplicationController
   end
 
   def rants
-
+    @rants = params[:spam] ? Rant.where(spam: true) : Rant.all
   end
 end

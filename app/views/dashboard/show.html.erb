@@ -1,20 +1,3 @@
-<%= content_for :nav do %>
-  <nav>
-    <div>
-      <%= link_to 'Dashboard', root_path, class: 'active' %>
-    </div>
-    <div>
-      <%= link_to 'Following', user_followings_path(current_user) %>
-    </div>
-    <div>
-      <%= link_to 'Favorites', favorites_path(current_user) %>
-    </div>
-    <div>
-      <%= link_to 'Search', new_search_path %>
-    </div>
-  </nav>
-<% end %>
-
 <div class="right-container">
   <% if @dashboard.latest_rants.any? %>
     <h1>Latest Rants</h1>
@@ -29,8 +12,11 @@
               </h2>
               <%= image_tag image_path(rant.user), alt: 'No Image' %>
               <% unless is_me?(rant.user) %>
-                <%= link_to "Unfollow", '#', class: "follow-button" %>
-                <%= link_to "Follow", '#', class: "follow-button" %>
+                <% if current_user.following?(rant.user.id) %>
+                  <%= link_to "Unfollow", '#', class: "unfollow-button" %>
+                <% else %>
+                  <%= link_to "Follow", '#', class: "follow-button" %>
+                <% end %>
               <% end %>
             </div>
             <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>

@@ -32,6 +32,10 @@ module ApplicationHelper
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(text).html_safe
   end
 
+  def remaining_table_row_count(collection)
+    (1..(14-collection.length))
+  end
+
   private
   def user_has_visited?
     cookies[:visited] == 1

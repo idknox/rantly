@@ -1,8 +1,5 @@
 class CommentsController < ApplicationController
   def create
-    puts "*" * 80
-    puts params
-    puts "*" * 80
     @comment = Comment.new(
       user_id: current_user.id,
       rant_id: params[:rant_id],
