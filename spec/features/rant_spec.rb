@@ -39,5 +39,12 @@ feature "Rants" do
     click_on "Favorites"
     expect(page).to have_content(@rant.body, @other_user.first_name, "Unfavorite")
   end
+
+  scenario "user can mark rant as spam" do
+    click_on @rant.body
+    click_on "Spam"
+    visit root_path
+    expect(page).to_not have_content(@rant.body, @other_user.first_name)
+  end
 end
 

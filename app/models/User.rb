@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :images
   has_many :comments
 
+
   has_secure_password
   validates :username, :password, :first_name, :last_name, :bio, :rant_frequency, presence: true
   validates :username, uniqueness: true, unless: :force_submit

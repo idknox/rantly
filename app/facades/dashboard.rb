@@ -7,14 +7,14 @@ class Dashboard
   attr_reader :user
 
   def my_rants
-    user.rants
+    user.rants.where('spam <> true')
   end
 
   def latest_rants
-    Rant.where('user_id <> ?', user.id)
+    Rant.where('user_id <> ? AND spam <> true', user.id)
   end
 
   def mentioned_rants(user)
-    Rant.where('body LIKE ?', '%@' + user.username + '%')
+    Rant.where('body LIKE ? AND spam <> true', '%@' + user.username + '%')
   end
 end

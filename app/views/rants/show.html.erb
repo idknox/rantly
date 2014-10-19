@@ -8,8 +8,14 @@
   <hr>
   <div class="rant-container">
     <div class="rant-user">
-      <%= link_to @rant_dashboard.rant.user.first_name, user_path(@rant_dashboard.rant.user) %>
       <%= image_tag image_path(@rant_dashboard.rant.user), alt: 'No Image' %>
+    </div>
+    <div class="rant-options">
+      <h2>by <%= link_to full_name(@rant_dashboard.rant.user), user_path(@rant_dashboard.rant.user) %></h2>
+      <div>
+      <%= link_to 'Spam', spam_path(@rant_dashboard.rant.id), class: 'spam' %>
+      <%= link_to 'Tweet', '#', class: 'tweet' %>
+      </div>
     </div>
     <p>
       <%= markdown(@rant_dashboard.rant.body) %>

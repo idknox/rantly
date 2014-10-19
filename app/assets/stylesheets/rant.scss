@@ -6,17 +6,17 @@
   padding: .5em;
   width: 100%;
 
-  .rant-user {
-    width: 20%;
-    float: left;
-    margin: 0 1em 0 0;
-    text-align: center;
-
     a, a:visited {
       color: #333;
       text-decoration: none;
-      font-size: 2em;
     }
+
+  .rant-user {
+    width: 20%;
+    float: left;
+    margin: -5px 1em 0 0;
+    text-align: center;
+
 
     img {
       margin-top: .5em;
@@ -24,8 +24,30 @@
     }
   }
 
+  .rant-options {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+      width: 20%;
+      display: flex;
+      justify-content: space-between;
+
+      a {
+        padding: 5px 10px 5px 10px;
+      }
+
+      .spam {
+        background-color: red;
+      }
+
+      .tweet {
+        background-color: #55ACEE;
+      }
+    }
+  }
   p {
-    margin: 0;
+    margin: 5px 0 0 0;
     word-wrap: break-word;
   }
 }

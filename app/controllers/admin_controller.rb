@@ -6,6 +6,6 @@ class AdminController < ApplicationController
   end
 
   def rants
-    @rants = params[:spam] ? Rant.where(spam: true) : Rant.all
+    @rants = (params[:spam] ? Rant.where(spam: true) : Rant.all).order(:created_at)
   end
 end

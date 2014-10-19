@@ -22,6 +22,10 @@ class RantsController < ApplicationController
     @rant_dashboard = RantDashboard.new(Rant.find(params[:id]))
   end
 
+  def spam
+    Rant.find(params[:rant_id]).update!(spam: true)
+    redirect_to :back
+  end
   private
 
   def rant_params
