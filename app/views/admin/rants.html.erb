@@ -28,10 +28,11 @@
     <% @rants.each do |rant| %>
       <tr>
         <td><%= full_name(rant.user) %></td>
-        <td><%= rant.user.username %></td>
+        <td><%= rant.id %></td>
         <td><%= rant.subject %></td>
         <td>
-          <%= link_to 'View', user_rant_path(rant.user, rant) %>
+          <%= render partial: 'admin_rants', locals: {rant: rant} unless rant.spam %>
+          <%= render partial: 'admin_spam', locals: {rant: rant} if rant.spam %>
         </td>
       </tr>
     <% end %>

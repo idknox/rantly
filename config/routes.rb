@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "/users/:user_id/image" => "dashboard#display_image", as: :image
   get "/admin/rants" => "admin#rants"
   get "/rants/:rant_id/spam" => "rants#spam", as: :spam
+  get "/rants/:rant_id/unspam" => "rants#unspam", as: :unspam
+
   resources :users do
     resources :rants do
       resources :favorites, only: [:create, :destroy]
