@@ -38,5 +38,5 @@ class AdminController < ApplicationController
 
   def determine_rants_or_spam
     params[:spam] ? Rant.spam_only : Rant.no_spam
-  end  
+  end
 end

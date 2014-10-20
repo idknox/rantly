@@ -19,6 +19,7 @@
     form {
       display: flex;
       justify-content: space-between;
+      align-items: flex-end;
       width: 70%;
 
       .filter {
@@ -27,7 +28,8 @@
         text-decoration: none;
         text-align: center;
         border: 0;
-        padding: 5px;
+        padding: 0;
+        height: 2em;
         width: 35%;
       }
 
@@ -36,15 +38,26 @@
         text-align: center;
         padding: 5px;
       }
+
+      .ui-datepicker-trigger {
+        cursor: pointer;
+        height: 2em;
+        position: relative;
+//        top: 10px;
+        margin-left: 5px;
+      }
     }
 
     div {
       width: 20%;
+      display: flex;
+      align-items: flex-end;
 
       .filter {
-        width: 50%;
+        width: 20%;
         background-color: #EDEDED;
         text-decoration: none;
+        text-align: center;
         height: 1em;
         padding: 5px;
         color: #333;
