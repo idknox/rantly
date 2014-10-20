@@ -36,6 +36,14 @@ class Rant < ActiveRecord::Base
     )
   end
 
+  def self.spam_only
+    where(spam: true)
+  end
+
+  def self.no_spam
+    where(spam: false)
+  end
+
   private
 
 
