@@ -29,7 +29,7 @@
     <% @rants.each do |rant| %>
       <tr>
         <td><%= full_name(rant.user) %></td>
-        <td><%= rant.id %></td>
+        <td><%= rant.user.username %></td>
         <td><%= rant.subject %></td>
         <td>
           <%= render partial: 'admin_rants_actions', locals: {rant: rant} unless rant.spam %>
