@@ -1,4 +1,4 @@
-.admin-rants {
+.admin-container {
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -8,13 +8,14 @@
 
   h1 {
     font-size: 3em;
+    margin-bottom: .5em;
   }
 
   .admin-rant-filters {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: 1em 0 1em 0;
+    margin-bottom: 1em;
 
     form {
       display: flex;
@@ -71,7 +72,7 @@
 
   }
 
-  .admin-rants-table {
+  .admin-table {
     width: 100%;
 
     th, td {
@@ -91,6 +92,10 @@
       background-color: #c0c0c0;
       padding-left: 5px;
       width: 25%;
+    }
+
+    .disabled {
+      width: 10%;
     }
   }
 }

@@ -18,10 +18,7 @@
       <%= link_to 'Rants', admin_rants_path, class: (on_admin_rants_page? ? 'active' : '') %>
     </div>
     <div>
-      <%= link_to 'Favorites', favorites_path(current_user), class: (on_favorites_page? ? 'active' : '') %>
-    </div>
-    <div>
-      <%= link_to 'Search', new_search_path, class: (on_search_page? ? 'active' : '') %>
+      <%= link_to 'Users', admin_users_path, class: (on_admin_users_page? ? 'active' : '') %>
     </div>
   </nav>
   <div class="session-buttons">

@@ -13,6 +13,10 @@ class AdminController < ApplicationController
     @rants = filtered_if_needed(Rant.spam_only).order(:created_at)
   end
 
+  def users
+    @users = User.all
+  end
+
   private
 
   def filtered_if_needed(rants)

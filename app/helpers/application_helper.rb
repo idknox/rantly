@@ -31,12 +31,16 @@ module ApplicationHelper
   def on_admin_spam_page?
     current_page? admin_spam_path
   end
+
+  def on_admin_users_page?
+    current_page? admin_users_path
+  end
   def markdown(text)
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(text).html_safe
   end
 
   def remaining_table_row_count(collection)
-    (1..(14-collection.length))
+    (1..(15-collection.length))
   end
 
   private
