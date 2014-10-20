@@ -12,9 +12,17 @@
     </div>
     <div class="rant-options">
       <h2>by <%= link_to full_name(@rant_dashboard.rant.user), user_path(@rant_dashboard.rant.user) %></h2>
+
       <div>
-      <%= link_to 'Spam', spam_path(@rant_dashboard.rant.id), class: 'spam' %>
-      <%= link_to 'Tweet', '#', class: 'tweet' %>
+        <%= link_to 'Spam', spam_path(@rant_dashboard.rant.id), class: 'spam' %>
+        <%= link_to 'Tweet',
+                    'https://twitter.com/share',
+                    class: 'tweet twitter-share-button',
+                    data: {
+                      text: "Check out my Rant about #{@rant_dashboard.rant.subject} ",
+                      count: 'none',
+                      size: 'large'
+                    } %>
       </div>
     </div>
     <p>
@@ -37,4 +45,19 @@
     <% end %>
   </div>
 </div>
+<script type="text/javascript">
+  window.twttr = (function (d, s, id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = {_e: [], ready: function (f) {
+      t._e.push(f)
+    }})
+  }(document, "script", "twitter-wjs"));
+</script>
 
