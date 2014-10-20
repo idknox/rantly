@@ -6,17 +6,17 @@ class AdminController < ApplicationController
   end
 
   def rants
-    puts "*" * 80
-    puts params
-    puts "*" * 80
+    @rants = filtered_if_needed(Rant.no_spam).order(:created_at)
+  end
 
-    @rants = determine_if_filtered.order(:created_at)
+  def spam
+    @rants = filtered_if_needed(Rant.spam_only).order(:created_at)
   end
 
   private
 
-  def determine_if_filtered
-    filters_exist? ? filtered_rants(determine_rants_or_spam) : determine_rants_or_spam
+  def filtered_if_needed(rants)
+    filters_exist? ? filtered_rants(rants) : rants
   end
 
   def filters_exist?
@@ -34,9 +34,5 @@ class AdminController < ApplicationController
   def partial_filtered(rants)
     filtered_by_start_only = params[:ends_on] == '  /   /    '  ? rants.where('created_at > ?', params[:starts_on]) : rants
     params[:starts_on] == '  /   /    ' ? rants.where('created_at < ?', params[:ends_on]) : filtered_by_start_only
-  end
-
-  def determine_rants_or_spam
-    params[:spam] ? Rant.spam_only : Rant.no_spam
   end
 end

@@ -28,6 +28,9 @@ module ApplicationHelper
     current_page? admin_rants_path
   end
 
+  def on_admin_spam_page?
+    current_page? admin_spam_path
+  end
   def markdown(text)
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(text).html_safe
   end

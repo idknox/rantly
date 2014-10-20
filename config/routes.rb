@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/search/results" => "searches#show", as: :search
   get "/users/:user_id/image" => "dashboard#display_image", as: :image
   get "/admin/rants" => "admin#rants"
+  get "/admin/spam" => "admin#spam"
   get "/rants/:rant_id/spam" => "rants#spam", as: :spam
   get "/rants/:rant_id/unspam" => "rants#unspam", as: :unspam
 
