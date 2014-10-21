@@ -40,11 +40,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency, :image)
+    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency, :image, :admin, :disabled)
   end
 
   def user_params_without_image
-    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency, :admin)
+    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency, :admin, :disabled)
   end
 
   def set_registered_cookie

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "/admin/rants" => "admin#rants"
   get "/admin/spam" => "admin#spam"
   get "/admin/users" => "admin#users"
+  get "/admin/users/:user_id/enable" => "admin#enable", as: :admin_enable
+  get "/admin/users/:user_id/disable" => "admin#disable", as: :admin_disable
 
   resources :users do
     resources :rants do

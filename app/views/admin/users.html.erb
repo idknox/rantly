@@ -15,9 +15,12 @@
       <tr>
         <td><%= full_name(user) %></td>
         <td><%= user.username %></td>
-        <td><%= user.rants.length %></td>
-        <td></td>
-        <td></td>
+        <td><%= user.number_of_rants %></td>
+        <td> <%= "✓" if user.disabled? %></td>
+        <td>
+          <%= link_to "Disable", admin_disable_path(user) unless user.disabled? %>
+          <%= link_to "Enable", admin_enable_path(user) if user.disabled? %>
+        </td>
       </tr>
     <% end %>
     <% remaining_table_row_count(@users).each do |row| %>

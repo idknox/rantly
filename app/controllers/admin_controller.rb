@@ -14,7 +14,19 @@ class AdminController < ApplicationController
   end
 
   def users
-    @users = User.all
+    @users = User.sorted_by_rant_count
+  end
+
+  def disable
+    user = User.find(params[:user_id])
+    user.update_attribute(:disabled, true)
+    redirect_to :back
+  end
+
+  def enable
+    user = User.find(params[:user_id])
+    user.update_attribute(:disabled, false)
+    redirect_to :back
   end
 
   private
@@ -24,7 +36,7 @@ class AdminController < ApplicationController
   end
 
   def filters_exist?
-    params[:starts_on] && params[:ends_on]
+    (params[:starts_on] && params[:ends_on]) || one_blank_filter?
   end
 
   def filtered_rants(rants)
