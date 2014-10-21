@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "/users/:user_id/image" => "dashboard#display_image", as: :image
   get "/rants/:rant_id/spam" => "rants#spam", as: :spam
   get "/rants/:rant_id/unspam" => "rants#unspam", as: :unspam
+  get "/users/:user_id/rants/:rant_id/favorite" => "favorites#create", as: :favorite
+  get "/users/:user_id/rants/:rant_id/unfavorite" => "favorites#destroy", as: :unfavorite
   get "/admin/rants" => "admin#rants"
   get "/admin/spam" => "admin#spam"
   get "/admin/users" => "admin#users"
@@ -19,7 +21,6 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :rants do
-      resources :favorites, only: [:create, :destroy]
       resource :comments, only: :create
     end
     resources :followings, only: :index

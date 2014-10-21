@@ -6,7 +6,7 @@ $(document).ready(function () {
         .append('Unfollow');
     };
 
-    var id = $(this).parents('.rant').first().data('followee');
+    var id = $(this).parents('.rant').first().data('user');
     var promiseOfResult = $.get("/" + id + "/follow", {followee_id: id});
     promiseOfResult.success(toggleFollowButton($(this)));
   });
@@ -18,7 +18,7 @@ $(document).ready(function () {
         .addClass('follow-button');
     };
 
-    var id = $(this).parents('.rant').first().data('followee');
+    var id = $(this).parents('.rant').first().data('user');
     var promiseOfResult = $.get("/" + id + "/unfollow", {followee_id: id});
     promiseOfResult.success(toggleUnfollowButton($(this)));
   })

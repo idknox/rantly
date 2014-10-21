@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    Favorite.destroy(params[:id])
+    Favorite.find_by(user_id: current_user.id, rant_id: params[:rant_id]).destroy
     redirect_to :back
   end
 

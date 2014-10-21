@@ -1,10 +1,17 @@
 <div class="right-container">
   <h1><%= @rant_dashboard.rant.subject %></h1>
+  <div class="rant"
+       id="<%= @rant_dashboard.rant.id %>"
+       data-user="<%= @rant_dashboard.rant.user.id %>"
+       data-rant="<%= @rant_dashboard.rant.id %>"
+       data-fav-count="<%= @rant_dashboard.rant.favorite_count %>"
+  >
   <% if @rant_dashboard.rant.get_favorite(current_user) %>
-    <%= link_to "#{@rant_dashboard.rant.favorite_count} - Unfavorite", user_rant_favorite_path(@rant_dashboard.rant.user, @rant_dashboard.rant, @rant_dashboard.rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
+    <%= link_to "#{@rant_dashboard.rant.favorite_count} - Unfavorite", '#', class: 'unfavorite-button' %>
   <% else %>
-    <%= link_to "#{@rant_dashboard.rant.favorite_count} - Favorite", user_rant_favorites_path(@rant_dashboard.rant.user, @rant_dashboard.rant), method: :post, class: "favorite-button" %>
+    <%= link_to "#{@rant_dashboard.rant.favorite_count} - Favorite", '#', class: 'favorite-button' %>
   <% end %>
+    </div>
   <hr>
   <div class="rant-container">
     <div class="rant-user">

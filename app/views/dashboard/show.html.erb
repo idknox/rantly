@@ -4,31 +4,35 @@
     <hr>
     <div class="rants">
       <% @dashboard.latest_rants.each do |rant| %>
-        <div class="rant" id="<%= rant.id %>" data-followee="<%= rant.user.id %>">
+        <div class="rant"
+             id="<%= rant.id %>"
+             data-user="<%= rant.user.id %>"
+             data-rant="<%= rant.id %>"
+             data-fav-count="<%= rant.favorite_count %>"
+        >
           <div>
             <div class="rant-user-info">
               <h2>
-                <%= link_to rant.user.first_name, user_path(rant.user), class: "first-name" %>
+                <%= link_to rant.user.first_name, user_path(rant.user), class: 'first-name' %>
               </h2>
               <%= image_tag image_path(rant.user), alt: 'No Image' %>
               <% unless is_me?(rant.user) %>
                 <% if current_user.following?(rant.user.id) %>
-                  <%= link_to "Unfollow", '#', class: "unfollow-button" %>
+                  <%= link_to 'Unfollow', '#', class: 'unfollow-button' %>
                 <% else %>
-                  <%= link_to "Follow", '#', class: "follow-button" %>
+                  <%= link_to 'Follow', '#', class: 'follow-button' %>
                 <% end %>
               <% end %>
             </div>
-            <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
+            <%= link_to user_rant_path(rant.user, rant), class: 'rant-body' do %>
               <%= rant.body_truncated_if_needed %>
             <% end %>
           </div>
           <div class="rant-buttons">
-
             <% if rant.get_favorite(current_user) %>
-              <%= link_to "#{rant.favorite_count} - Unfavorite", user_rant_favorite_path(rant.user, rant, rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
+              <%= link_to "#{rant.favorite_count} - Unfavorite", '#', class: 'unfavorite-button' %>
             <% else %>
-              <%= link_to "#{rant.favorite_count} - Favorite", user_rant_favorites_path(rant.user, rant), method: :post, class: "favorite-button" %>
+              <%= link_to "#{rant.favorite_count} - Favorite", '#', class: 'favorite-button' %>
             <% end %>
           </div>
         </div>

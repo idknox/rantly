@@ -22,7 +22,12 @@
   </div>
   <div class="user-profile-rants">
     <% @user.rants_sorted_by_favorites.each do |rant| %>
-      <div class="user-profile-rant">
+      <div class="rant user-profile-rant"
+           id="<%= rant.id %>"
+           data-user="<%= rant.user.id %>"
+           data-rant="<%= rant.id %>"
+           data-fav-count="<%= rant.favorite_count %>"
+      >
         <h2><%= rant.subject %></h2>
         <%= link_to user_rant_path(@user, rant), class: "rant-body" do %>
           <p>
@@ -30,9 +35,9 @@
           </p>
         <% end %>
         <% if rant.get_favorite(current_user) %>
-          <%= link_to "#{rant.favorite_count} - Unfavorite", user_rant_favorite_path(rant.user, rant, rant.get_favorite(current_user)), method: :delete, class: "favorite-button" %>
+          <%= link_to "#{rant.favorite_count} - Unfavorite", '#', class: 'unfavorite-button' %>
         <% else %>
-          <%= link_to "#{rant.favorite_count} - Favorite", user_rant_favorites_path(rant.user, rant), method: :post, class: "favorite-button" %>
+          <%= link_to "#{rant.favorite_count} - Favorite", '#', class: 'favorite-button' %>
         <% end %>
       </div>
     <% end %>
