@@ -15,7 +15,7 @@ class AdminController < ApplicationController
 
   def users
     @users = User.sorted_by_rant_count
-    @users.reverse! if params[:sort_asc]
+    @users.reverse! if params[:sort_desc]
   end
 
   def disable

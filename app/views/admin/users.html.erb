@@ -7,8 +7,8 @@
       <th>Email</th>
       <th class="rant-count-header">
         Number of Rants
-        <%= link_to (fa_icon 'caret_up'), admin_users_path(sort_asc: false) if params[:sort_asc] %>
-        <%= link_to (fa_icon 'caret-down'), admin_users_path(sort_asc: true) unless params[:sort_asc] %>
+        <%= link_to (fa_icon 'caret-up'), admin_users_path if params[:sort_desc] %>
+        <%= link_to (fa_icon 'caret-down'), admin_users_path(sort_desc: true) unless params[:sort_desc] %>
       </th>
       <th class="disabled">Disabled</th>
       <th>Actions</th>
