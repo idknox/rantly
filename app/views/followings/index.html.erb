@@ -6,7 +6,7 @@
       <div class="followee">
         <h3> <%= full_name(followee) %></h3>
         <%= image_tag image_path(followee), alt: 'No Image' %>
-        <%= link_to "Unfollow", unfollow_path(followee) %>
+        <%= link_to "Unfollow", unfollow_path(followee), class: 'unfollow-button' %>
       </div>
     <% end %>
   </div>

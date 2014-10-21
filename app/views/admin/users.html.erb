@@ -5,7 +5,11 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Number of Rants</th>
+      <th class="rant-count-header">
+        Number of Rants
+        <%= link_to (fa_icon 'caret_up'), admin_users_path(sort_asc: false) if params[:sort_asc] %>
+        <%= link_to (fa_icon 'caret-down'), admin_users_path(sort_asc: true) unless params[:sort_asc] %>
+      </th>
       <th class="disabled">Disabled</th>
       <th>Actions</th>
     </tr>
@@ -16,10 +20,10 @@
         <td><%= full_name(user) %></td>
         <td><%= user.username %></td>
         <td><%= user.number_of_rants %></td>
-        <td> <%= "✓" if user.disabled? %></td>
+        <td> <%= '✓' if user.disabled? %></td>
         <td>
-          <%= link_to "Disable", admin_disable_path(user) unless user.disabled? %>
-          <%= link_to "Enable", admin_enable_path(user) if user.disabled? %>
+          <%= link_to 'Disable', admin_disable_path(user) unless user.disabled? %>
+          <%= link_to 'Enable', admin_enable_path(user) if user.disabled? %>
         </td>
       </tr>
     <% end %>

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $('.follow-button').on('click', function () {
+  $('body').on('click', '.follow-button', function () {
     var toggleFollowButton = function (button) {
       button.removeClass('follow-button').addClass('unfollow-button').empty()
         .append('Unfollow');
@@ -11,7 +11,7 @@ $(document).ready(function () {
     promiseOfResult.success(toggleFollowButton($(this)));
   });
 
-  $('.unfollow-button').on('click', function () {
+  $('body').on('click', '.unfollow-button', function () {
     var toggleUnfollowButton = function (button) {
       console.log(button);
       button.empty().append('Follow').removeClass('unfollow-button')
