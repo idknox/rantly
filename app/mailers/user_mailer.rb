@@ -2,12 +2,12 @@ class UserMailer < ActionMailer::Base
   default from: "admin@rantly.com"
 
   def registration(recipient)
-    mail to: recipient.email, subject: 'Rantly Signup Confirmation'
+    mail to: recipient.email, subject: 'Thanks for Joining Rantly!'
   end
 
   def confirmation(recipient)
     confirmation_token = set_confirmation_token(recipient)
-    @confirmation_url = email_confirmation_path(confirmation_token)
+    @confirmation_url = email_confirmation_url(confirmation_token)
     mail to: recipient.email, subject: 'Please Confirm Your Rantly Membership'
   end
 
