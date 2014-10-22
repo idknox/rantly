@@ -1,12 +1,6 @@
-<%= form_for [current_user, new_rant] do |f| %>
-  <% f.object.errors.full_messages.each do |error| %>
-    <div class="errors">
-      <%= error %>
-    </div>
-  <% end %>
-  <%= f.label :subject, "A rant about:" %>
-  <%= f.text_field :subject %>
-  <%= f.label :body, "Rant:" %>
-  <%= f.text_area :body, rows: "14", placeholder: "Rant about something or at someone..." %>
-  <%= f.submit "RANT", class: "button" %>
-<% end %>
+  <div class="errors"></div>
+  <%= label_tag :subject, 'A rant about:' %>
+  <%= text_field_tag :subject, nil, autofocus: true, class: 'rant-subject'  %>
+  <%= label_tag :body, 'Rant:' %>
+  <%= text_area_tag :body, nil, rows: "14", placeholder: 'Rant about something or at someone...', class: 'rant-body' %>
+  <%= submit_tag 'RANT', class: 'button new-rant', data: {user_id: current_user.id} %>

@@ -1,13 +1,13 @@
 class RantsController < ApplicationController
   def create
-    @rant = Rant.new(rant_params)
-    @rant.user_id = current_user.id
-    if @rant.save
-      flash[:notice] = "Rant created"
-      redirect_to root_path
+    rant = Rant.new(rant_params)
+    rant.user_id = current_user.id
+
+    if rant.save
+      render nothing: true
     else
-      @dashboard = Dashboard.new(current_user)
-      render 'dashboard/show'
+      errors = rant.errors.messages
+      render json: {errors: errors}
     end
   end
 
