@@ -14,6 +14,9 @@ class SessionsController < ApplicationController
       @user = User.new(username: params[:user][:username])
       @user.errors[:base] << "Your account is disabled"
       render :new
+    elsif @user && !@user.confirmed
+      @user.errors[:base] << "Email is not confirmed"
+      render :new
     else
       @user = User.new(username: params[:user][:username])
       @user.errors[:base] << "Login failed"

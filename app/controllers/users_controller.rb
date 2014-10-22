@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       @user.create_image(params[:user][:image])
       set_registered_cookie
       UserMailer.registration(@user).deliver
+      UserMailer.confirmation(@user).deliver
       flash[:notice] = "Thank you for registering!"
       redirect_to root_path
     else
@@ -36,6 +37,19 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def confirm
+    email_confirmer = EmailConfirmer.find_by_confirmation_token(params[:confirmation_token])
+    if email_confirmer
+      User.find(email_confirmer.user_id).update_attribute(confirmed, true)
+      email_confirmer.destroy
+      flash[:notice] = "Email confirmed. You can now log in."
+      redirect_to signin_path
+    else
+      flash[:notice] = "Email confirmation is invalid"
+      redirect_to root_path
+    end
   end
 
   private

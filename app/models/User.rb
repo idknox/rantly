@@ -47,7 +47,16 @@ class User < ActiveRecord::Base
     ) if image
   end
 
+  def send_confirmation_email
+
+  end
+
   def self.sorted_by_rant_count
     all.sort_by {|user| user.number_of_rants }.reverse
   end
+
+  private
+
+
+
 end
