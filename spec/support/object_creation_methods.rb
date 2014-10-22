@@ -3,6 +3,7 @@ def create_user(overrides = {})
                  username: 'idknox',
                  first_name: 'Ian',
                  last_name: 'Knox',
+                 email: 'fake@fake.com',
                  password: 'password',
                  bio: 'Student',
                  rant_frequency: 'Daily'
