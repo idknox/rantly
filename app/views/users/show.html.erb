@@ -31,7 +31,7 @@
         <h2><%= rant.subject %></h2>
         <%= link_to user_rant_path(@user, rant), class: "rant-body" do %>
           <p>
-            <%= rant.body_truncated_if_needed %>
+            <%= hashtagable(rant.body_truncated_if_needed) %>
           </p>
         <% end %>
         <% if rant.get_favorite(current_user) %>

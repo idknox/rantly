@@ -1,6 +1,6 @@
 <div class="right-container">
   <h1><%= @rant_dashboard.rant.subject %></h1>
-  <div class="rant"
+  <div class="rant favorite-container"
        id="<%= @rant_dashboard.rant.id %>"
        data-user="<%= @rant_dashboard.rant.user.id %>"
        data-rant="<%= @rant_dashboard.rant.id %>"
@@ -33,11 +33,11 @@
       </div>
     </div>
     <p>
-      <%= markdown(@rant_dashboard.rant.body) %>
+      <%= hashtagable(@rant_dashboard.rant.body) %>
     </p>
   </div>
-  <hr class="rant-separator">
-  <div class="comments">
+  <hr class="rant-
+  <div class="comments>
     <% @rant_dashboard.rant.comments.each do |comment| %>
       <div class="comment">
         <%= image_tag image_path(comment.user) %>

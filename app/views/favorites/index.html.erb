@@ -5,7 +5,7 @@
     <% current_user.favorites.each do |favorite| %>
       <div class="rant"
            id="<%= favorite.rant.id %>"
-           data-user="<%= favorite.rant.user.id %>"
+           data-user="<%= favorite.user.id %>"
            data-rant="<%= favorite.rant.id %>"
            data-fav-count="<%= favorite.rant.favorite_count %>"
       >
@@ -24,11 +24,11 @@
             <% end %>
           </div>
           <%= link_to user_rant_path(favorite.rant.user, favorite.rant), class: "rant-body" do %>
-            <%= favorite.rant.body_truncated_if_needed %>
+            <%= hashtagable(favorite.rant.body_truncated_if_needed) %>
           <% end %>
         </div>
         <div class="rant-buttons">
-          <%= link_to 'Unfavorite', '#', class: 'unfavorite-button' %>
+          <%= link_to "#{favorite.rant.favorite_count} - Unfavorite", '#', class: 'unfavorite-button' %>
         </div>
       </div>
     <% end %>

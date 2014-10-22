@@ -44,6 +44,8 @@ class Rant < ActiveRecord::Base
     where(spam: false)
   end
 
+
+
   private
 
 
