@@ -28,7 +28,7 @@
            data-rant="<%= rant.id %>"
            data-fav-count="<%= rant.favorite_count %>"
       >
-        <h2><%= rant.subject %></h2>
+        <h2><%= hashtagable(rant.subject) %></h2>
         <%= link_to user_rant_path(@user, rant), class: "rant-body" do %>
           <p>
             <%= hashtagable(rant.body_truncated_if_needed) %>

@@ -54,7 +54,7 @@
               <%= image_tag image_path(current_user) %>
             </div>
             <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
-              <p><%= hashtagable(rant.body_truncated_if_needed) %></p>
+              <%= hashtagable(rant.body_truncated_if_needed) %>
             <% end %>
           </div>
           <%= link_to "Delete", user_rant_path(rant.user, rant), method: :delete %>
