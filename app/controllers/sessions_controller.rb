@@ -7,15 +7,15 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:user][:username])
-    if @user && @user.authenticate(params[:user][:password]) && !@user.disabled
+    if @user && @user.authenticate(params[:user][:password]) && !@user.disabled && @user.confirmed
       session[:user_id] = @user.id
       redirect_to root_path
+    elsif @user && @user.authenticate(params[:user][:password]) && !@user.confirmed
+      @user.errors[:base] << "Email is not confirmed"
+      render :new
     elsif @user && @user.authenticate(params[:user][:password]) && @user.disabled
       @user = User.new(username: params[:user][:username])
       @user.errors[:base] << "Your account is disabled"
-      render :new
-    elsif @user && !@user.confirmed
-      @user.errors[:base] << "Email is not confirmed"
       render :new
     else
       @user = User.new(username: params[:user][:username])
