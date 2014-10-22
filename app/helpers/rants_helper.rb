@@ -2,7 +2,7 @@ module RantsHelper
   def hashtagable(text)
     new_body = text.split(' ').map do |word|
       if word[0] == '#'
-        "<a class='hashtag' href='/search/results?search=##{word[1..-1]}'>#{word}</a>"
+        "<a class='hashtag' href='/search/results?search=%23#{word[1..-1]}'>#{word}</a>"
       else
         word
       end
