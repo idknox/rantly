@@ -33,7 +33,7 @@ class Rant < ActiveRecord::Base
       search,
       '%' + search + '%',
       '%' + search + '%'
-    )
+    ).no_spam
   end
 
   def self.spam_only
