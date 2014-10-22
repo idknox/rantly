@@ -8,6 +8,7 @@ class UserMailer < ActionMailer::Base
   def confirmation(recipient)
     confirmation_token = set_confirmation_token(recipient)
     @confirmation_url = email_confirmation_url(confirmation_token)
+    @user = recipient
     mail to: recipient.email, subject: 'Please Confirm Your Rantly Membership'
   end
 

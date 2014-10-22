@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     elsif @user && @user.authenticate(params[:user][:password]) && !@user.confirmed
+      @user = User.new(username: params[:user][:username])
       @user.errors[:base] << "Email is not confirmed"
       render :new
     elsif @user && @user.authenticate(params[:user][:password]) && @user.disabled

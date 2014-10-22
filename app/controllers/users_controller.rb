@@ -40,10 +40,9 @@ class UsersController < ApplicationController
   end
 
   def confirm
-    email_confirmer = EmailConfirmer.find_by_confirmation_token(params[:confirmation_token])
+    email_confirmer = EmailConfirmer.find_by(confirmation_token: params[:confirmation_token])
     if email_confirmer
-      user = User.find(email_confirmer.user_id)
-      user.update_attribute(confirmed, true)
+      User.find(email_confirmer.user_id).update!(confirmed: true)
       email_confirmer.destroy
       flash[:notice] = "Email confirmed. You can now log in."
       redirect_to signin_path
