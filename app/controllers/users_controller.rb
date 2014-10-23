@@ -41,6 +41,10 @@ class UsersController < ApplicationController
 
   def confirm
     email_confirmer = EmailConfirmer.find_by(confirmation_token: params[:confirmation_token])
+    puts "*" * 80
+    puts params
+    puts email_confirmer
+    puts "*" * 80
     if email_confirmer
       User.find(email_confirmer.user_id).update!(confirmed: true)
       email_confirmer.destroy
