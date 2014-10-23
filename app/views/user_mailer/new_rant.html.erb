@@ -6,8 +6,7 @@
 <body>
 <h1>
   Check Out <%= @ranter.first_name + 's' %> New Rant About
-  <%= @ranter.rants.last.subject %> here:
-  <%= user_rant_url(@ranter, @ranter.rants.last) %>
+  <%= @ranter.rants.last.subject %> <%= link_to 'here', user_rant_url(@ranter, @ranter.rants.last) %>:
 </h1>
 </body>
 </html>
