@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :ensure_current_user, only: [:new, :create]
+  skip_before_action :ensure_current_user, only: [:new, :create, :confirm]
 
   def new
     @user = User.new
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     puts email_confirmer
     puts "*" * 80
     if email_confirmer
-      User.find(email_confirmer.user_id).update!(confirmed: true)
+      User.find(email_confirmer.user_id).update_attribute(:confirmed, true)
       email_confirmer.destroy
       flash[:notice] = "Email confirmed. You can now log in."
       redirect_to signin_path
