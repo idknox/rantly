@@ -12,7 +12,11 @@ class UserMailer < ActionMailer::Base
     mail to: recipient.email, subject: 'Please Confirm Your Rantly Membership'
   end
 
-  private
-
-
+  def new_rant(ranter)
+    Following.where(followee_id: ranter.id).each do |following|
+      user = User.find(following.follower_id)
+      @ranter = ranter
+      mail to: user.email, subject: "#{ranter.first_name} Has Posted a New Rant!"
+    end
+  end
 end

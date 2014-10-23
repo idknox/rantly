@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+<h1>
+  Check Out <%= @ranter.first_name + 's' %> New Rant About
+  <%= @ranter.rants.last.subject %> here:
+  <%= user_rant_url(@ranter, @ranter.rants.last) %>
+</h1>
+</body>
+</html>

@@ -5,4 +5,5 @@ class EmailConfirmer < ActiveRecord::Base
     email_confirmer.save!
     email_confirmer.confirmation_token
   end
+
 end

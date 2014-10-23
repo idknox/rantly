@@ -48,7 +48,8 @@ class User < ActiveRecord::Base
   end
 
   def send_confirmation_email
-
+    confirmation_token = set_confirmation_token
+    UserMailer.confirmation(self, email_confirmation_url(confirmation_token)).deliver
   end
 
   def self.sorted_by_rant_count
@@ -57,6 +58,10 @@ class User < ActiveRecord::Base
 
   private
 
-
+  def set_confirmation_token
+    email_confirmer = EmailConfirmer.new(user_id: id, confirmation_token: SecureRandom.uuid)
+    email_confirmer.save!
+    email_confirmer.confirmation_token
+  end
 
 end
