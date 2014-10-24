@@ -7,7 +7,6 @@ class AdminController < ApplicationController
   end
 
   def dashboard
-    render json: User.keen_login_data
   end
 
   def rants
@@ -33,6 +32,10 @@ class AdminController < ApplicationController
     user = User.find(params[:user_id])
     user.update_attribute(:disabled, false)
     redirect_to :back
+  end
+
+  def logins_chart
+    render json: User.keen_login_data
   end
 
   private
