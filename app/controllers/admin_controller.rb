@@ -45,7 +45,7 @@ class AdminController < ApplicationController
   end
 
   def filters_exist?
-    (params[:starts_on] && params[:ends_on]) || one_blank_filter?
+    (params[:starts_on] != '  /   /    ' && params[:ends_on] != '  /   /    ') || one_blank_filter?
   end
 
   def filtered_rants(rants)
@@ -53,7 +53,7 @@ class AdminController < ApplicationController
   end
 
   def one_blank_filter?
-    params[:ends_on] == '  /   /    ' || params[:starts_on] == '  /   /    '
+    (params[:ends_on] == '  /   /    ' && params[:starts_on] != '  /   /    ') || (params[:starts_on] == '  /   /    ' && params[:ends_on] != '  /   /    ')
   end
 
   def partial_filtered(rants)
