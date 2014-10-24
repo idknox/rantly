@@ -1,10 +1,20 @@
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<div class="admin-dashboard-container">
+  <div id="logins">
+   </div>
+  <div id="rants">
+    <%= column_chart Rant.group_by_day(:created_at, range: 1.week.ago.midnight..Time.now, format: "%l %P").count, min: 0, max: 20 %>
+  </div>
+  <div id="users">
+    <%= column_chart User.group_by_day(:created_at, range: 1.week.ago.midnight..Time.now, format: "%l %P").count, min: 0, max: 20, library: {chart: {title: 'User Registrations per Day'}} %>
+  </div>
+</div>
+
 <%= content_for :keen do %>
   <script type="text/javascript">
     !function(a,b){if(void 0===b[a]){b["_"+a]={},b[a]=function(c){b["_"+a].clients=b["_"+a].clients||{},b["_"+a].clients[c.projectId]=this,this._config=c},b[a].ready=function(c){b["_"+a].ready=b["_"+a].ready||[],b["_"+a].ready.push(c)};for(var c=["addEvent","setGlobalProperties","trackExternalLink","on"],d=0;d<c.length;d++){var e=c[d],f=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};b[a].prototype[e]=f(e)}var g=document.createElement("script");g.type="text/javascript",g.async=!0,g.src="https://d26b395fwzu5fz.cloudfront.net/3.0.9/keen.min.js";var h=document.getElementsByTagName("script")[0];h.parentNode.insertBefore(g,h)}}("Keen",this);
   </script>
   <script>
-    $(document).ready(function () {
-
       var client = new Keen({
         projectId: "<%= ENV['KEEN_PROJECT_ID'] %>",
         readKey: "<%= ENV['KEEN_READ_KEY'] %>"
@@ -17,17 +27,12 @@
         });
         client.draw(query, document.getElementById("logins"), {
           chartType: "columnchart",
-          title: "User Logins Per Day",
+          title: "User Logins Per Hour",
           chartOptions: {
-            vAxis: {maxValue: 50, gridlines: {color: '#333333', count: 0}}
+            vAxis: {maxValue: 20, gridlines: {color: '#333333', count: 0}},
+            width: 50
           }
         });
-      });
-
     });
   </script>
 <% end %>
-
-<div class="admin-dashboard-container">
-  <div id="logins"></div>
-</div>

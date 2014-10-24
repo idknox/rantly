@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "/admin/users" => "admin#users"
   get "/admin/users/:user_id/enable" => "admin#enable", as: :admin_enable
   get "/admin/users/:user_id/disable" => "admin#disable", as: :admin_disable
+  get "/admin/charts/logins" => "admin#logins_chart", as: :admin_logins_chart
 
   get "/confirm_email/:confirmation_token" => "users#confirm", as: :email_confirmation
 

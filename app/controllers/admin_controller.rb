@@ -3,10 +3,11 @@ class AdminController < ApplicationController
 
   def ensure_admin
     redirect_to homepage_path unless you_are_admin?
+
   end
 
   def dashboard
-
+    render json: User.keen_login_data
   end
 
   def rants

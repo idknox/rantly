@@ -47,8 +47,13 @@ class User < ActiveRecord::Base
     ) if image
   end
 
+  def publish_registration_to_keen
+    Keen.publish(:users, {username: username})
+
+  end
+
   def publish_login_to_keen
-    Keen.publish(:logins, { username: username, date: Date.today.strftime('%m/%d/%Y') })
+    Keen.publish(:logins, {username: username, time: Time.now.strftime("%I %P")})
   end
 
   def send_confirmation_email
@@ -57,7 +62,14 @@ class User < ActiveRecord::Base
   end
 
   def self.sorted_by_rant_count
-    all.sort_by {|user| user.number_of_rants }.reverse
+    all.sort_by { |user| user.number_of_rants }.reverse
+  end
+
+  def self.keen_login_data
+    url = "https://api.keen.io/3.0/projects/54497c82072719342addb0cd/queries/count?api_key=e9edaffeaa76fcc6aaeda68fb266aaa7063dfc2f62b85f0c886955ce4417179b39fac604203ca34cf8106457dc643f1f7d9cb410b967b797533cf5fe504b0a032ac89f2ec95498a7c6673811f31d85b49a4edfcf60ae559ddbed22a393926dc5845115c42d321ba2972a903ace45e09d&event_collection=logins&timezone=-21600&group_by=time"
+    file = open(url) { |f| f.read }
+    logins = JSON.parse(file)["results"]
+    logins.map {|login|}
   end
 
   private

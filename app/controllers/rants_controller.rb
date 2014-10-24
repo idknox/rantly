@@ -5,6 +5,7 @@ class RantsController < ApplicationController
 
     if rant.save
       UserMailer.new_rant(current_user).deliver
+      rant.publish_rant_to_keen
       render nothing: true
     else
       errors = rant.errors.messages

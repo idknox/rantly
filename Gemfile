@@ -14,6 +14,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'redcarpet'
 gem 'font-awesome-rails'
 gem 'keen'
+gem 'chartkick'
+gem 'groupdate'
 
 group :production do
   gem 'rails_12factor'

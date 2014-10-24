@@ -1,9 +1,10 @@
 .admin-dashboard-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
 
-  #logins {
-    width: 25%;
+  div {
+    width: 30%;
+//    overflow: hidden;
   }
 }

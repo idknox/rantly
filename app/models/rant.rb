@@ -44,7 +44,9 @@ class Rant < ActiveRecord::Base
     where(spam: false)
   end
 
-
+  def publish_rant_to_keen
+    Keen.publish(:rants, {user: user.username})
+  end
 
   private
 
