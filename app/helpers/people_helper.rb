@@ -8,7 +8,7 @@ module PeopleHelper
     user == current_user
   end
 
-  def user_is_not_admin?(user)
-    !user.admin
+  def user_is_admin?(user)
+    user.admin
   end
 end

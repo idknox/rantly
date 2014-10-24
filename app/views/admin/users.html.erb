@@ -22,7 +22,7 @@
         <td><%= user.number_of_rants %></td>
         <td> <%= '✓' if user.disabled? %></td>
         <td>
-          <%= link_to 'Disable', admin_disable_path(user) unless user.disabled? && user_is_not_admin?(user) %>
+          <%= link_to 'Disable', admin_disable_path(user) unless (user.disabled? || user_is_admin?(user)) %>
           <%= link_to 'Enable', admin_enable_path(user) if user.disabled? %>
           <%= link_to 'Impersonate', '#' %>
         </td>
