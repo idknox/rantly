@@ -24,7 +24,7 @@
         <td>
           <%= link_to 'Disable', admin_disable_path(user) unless (user.disabled? || user_is_admin?(user)) %>
           <%= link_to 'Enable', admin_enable_path(user) if user.disabled? %>
-          <%= link_to 'Impersonate', '#' %>
+          <%= link_to 'Impersonate', admin_impersonate_path(user_id: user.id) unless user_is_admin?(user) %>
         </td>
       </tr>
     <% end %>

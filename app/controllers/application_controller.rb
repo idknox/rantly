@@ -18,7 +18,12 @@ class ApplicationController < ActionController::Base
     current_user && current_user.admin
   end
 
+  def admin_logged_in?
+    session[:admin_id]
+  end
+
   helper_method :current_user
   helper_method :new_rant
   helper_method :you_are_admin?
+  helper_method :admin_logged_in?
 end

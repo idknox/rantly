@@ -11,4 +11,6 @@ module PeopleHelper
   def user_is_admin?(user)
     user.admin
   end
+
+
 end
