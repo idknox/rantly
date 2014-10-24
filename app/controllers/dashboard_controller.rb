@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   def show
+    redirect_to admin_dashboard_path if you_are_admin?
     @dashboard = Dashboard.new(current_user)
   end
 
