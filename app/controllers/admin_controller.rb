@@ -5,6 +5,10 @@ class AdminController < ApplicationController
     redirect_to homepage_path unless you_are_admin?
   end
 
+  def dashboard
+
+  end
+
   def rants
     @rants = filtered_if_needed(Rant.no_spam).order(:created_at)
   end

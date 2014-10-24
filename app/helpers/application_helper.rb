@@ -35,6 +35,11 @@ module ApplicationHelper
   def on_admin_users_page?
     current_page? admin_users_path
   end
+
+  def on_admin_dashboard_page?
+    current_page? admin_dashboard_path
+  end
+
   def markdown(text)
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(text).html_safe
   end

@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     ) if image
   end
 
+  def publish_login_to_keen
+    Keen.publish(:logins, { username: username, date: Date.today.strftime('%m/%d/%Y') })
+  end
+
   def send_confirmation_email
     confirmation_token = set_confirmation_token
     UserMailer.confirmation(self, email_confirmation_url(confirmation_token)).deliver
