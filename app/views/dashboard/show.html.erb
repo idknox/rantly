@@ -25,7 +25,7 @@
               <% end %>
             </div>
             <%= link_to user_rant_path(rant.user, rant), class: 'rant-body' do %>
-              <%= hashtagable(rant.body_truncated_if_needed) %>
+              <%= markdown(rant.body_truncated_if_needed) %>
             <% end %>
           </div>
           <div class="rant-buttons">
@@ -53,9 +53,7 @@
               </h2>
               <%= image_tag image_path(current_user) %>
             </div>
-            <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
-              <%= hashtagable(rant.body_truncated_if_needed) %>
-            <% end %>
+            <%= link_to markdown(rant.body_truncated_if_needed), user_rant_path(rant.user, rant), class: "rant-body" %>
           </div>
           <%= link_to "Delete", user_rant_path(rant.user, rant), method: :delete %>
         </div>
@@ -83,7 +81,7 @@
               <% end %>
             </div>
             <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
-              <%= hashtagable(rant.body_truncated_if_needed) %>
+              <%= markdown(rant.body_truncated_if_needed) %>
             <% end %>
           </div>
 
