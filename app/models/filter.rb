@@ -3,6 +3,7 @@ class Filter
   def initialize(params)
     @params = params
   end
+
   def filtered_if_needed(rants)
     filters_exist? ? filtered_rants(rants) : rants
   end
@@ -10,7 +11,7 @@ class Filter
   private
 
   def filters_exist?
-    (@params[:starts_on] != '  /   /    ' && @params[:ends_on] != '  /   /    ') || one_blank_filter?
+    (@params[:starts_on] && @params[:ends_on]) && ((@params[:starts_on] != '  /   /    ' && @params[:ends_on] != '  /   /    ') || one_blank_filter?)
   end
 
   def filtered_rants(rants)

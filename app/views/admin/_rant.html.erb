@@ -5,11 +5,19 @@
     <div>
       <%= link_to 'All', admin_rants_path, class: "filter #{(on_admin_spam_page? ? '' : 'active')}" %><%= link_to 'Spam', admin_spam_path, class: "filter #{(on_admin_spam_page? ? 'active' : '')}" %>
     </div>
-    <%= form_tag admin_rants_path, method: 'get' do %>
+    <%
+       if on_admin_rants_page?
+         url = admin_rants_path
+       else
+         url = admin_spam_path
+       end
+    %>
+    <%= form_tag url, method: 'get' do %>
       <div>
         <%= text_field_tag :starts_on, '  /   /    ', class: 'datepicker' %>
       </div>
       <h3>To</h3>
+
       <div>
         <%= text_field_tag :ends_on, '  /   /    ', class: 'datepicker' %>
       </div>
