@@ -40,13 +40,13 @@
   <div class="comments">
     <% @rant_dashboard.rant.comments.each do |comment| %>
       <div class="comment">
-        <%= image_tag image_path(comment.user) %>
+        <%= image_tag image_path(comment.author) %>
         <%= comment.body %>
       </div>
     <% end %>
   </div>
   <div class="new-comment">
-    <%= form_for @rant_dashboard.new_comment, url: user_rant_comments_path(current_user, @rant_dashboard.rant) do |f| %>
+    <%= form_for @rant_dashboard.new_comment, url: comments_path(commentable_id: @rant_dashboard.rant.id, type: 'Rant') do |f| %>
       <%= f.text_field :body %>
       <%= f.submit 'RANT BACK', class: 'button' %>
     <% end %>

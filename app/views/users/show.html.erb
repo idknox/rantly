@@ -31,7 +31,7 @@
         <h2><%= hashtagable(rant.subject) %></h2>
         <%= link_to user_rant_path(@user, rant), class: "rant-body" do %>
           <p>
-            <%= hashtagable(rant.body_truncated_if_needed) %>
+            <%= rant.body_truncated_if_needed %>
           </p>
         <% end %>
         <% if rant.get_favorite(current_user) %>
@@ -42,4 +42,19 @@
       </div>
     <% end %>
   </div>
+  <div class="comments">
+    <% @user.comments.each do |comment| %>
+      <div class="comment">
+        <%= image_tag image_path(comment.author) %>
+        <%= comment.body %>
+      </div>
+    <% end %>
+  </div>
+  <div class="new-comment">
+    <%= form_for @comment, url: comments_path(commentable_id: @user.id, type: 'User') do |f| %>
+      <%= f.text_field :body %>
+      <%= f.submit 'COMMENT', class: 'button' %>
+    <% end %>
+  </div>
+</div>
 </div>

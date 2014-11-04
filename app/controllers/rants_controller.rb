@@ -23,6 +23,9 @@ class RantsController < ApplicationController
   def show
     rant = Rant.find(params[:id])
     @rant_dashboard = RantDashboard.new(rant)
+    puts "*" * 80
+    puts @rant_dashboard.rant.comments.length
+    puts "*" * 80
     redirect_to root_path if rant.spam
   end
 

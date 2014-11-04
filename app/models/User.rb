@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   has_many :followings, foreign_key: "follower_id", dependent: :destroy
   has_many :followees, through: :followings
   has_many :images
-  has_many :comments
-
+  has_many :comments, as: :commentable
+  has_many :authored_comments, foreign_key: "author_id", class_name: 'Comment'
 
   has_secure_password
   validates :username, :password, :email, :first_name, :last_name, :bio, :rant_frequency, presence: true

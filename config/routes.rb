@@ -26,9 +26,9 @@ Rails.application.routes.draw do
 
   get "/confirm_email/:confirmation_token" => "users#confirm", as: :email_confirmation
 
+  resource :comments, only: :create
   resources :users do
     resources :rants do
-      resource :comments, only: :create
     end
     resources :followings, only: :index
   end
