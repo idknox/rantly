@@ -27,7 +27,7 @@
             <% end %>
           </div>
           <%= link_to user_rant_path(rant.user, rant), class: "rant-body" do %>
-            <%= hashtagable(rant.body_truncated_if_needed) %>
+            <%= markdown(rant.body_truncated_if_needed) %>
           <% end %>
         </div>
         <div class="rant-buttons">
