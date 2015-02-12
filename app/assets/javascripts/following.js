@@ -22,4 +22,6 @@ $(document).ready(function () {
     var promiseOfResult = $.get("/" + id + "/unfollow", {followee_id: id});
     promiseOfResult.success(toggleUnfollowButton($(this)));
   })
+
+  // test
 });
